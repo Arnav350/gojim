@@ -11,4 +11,19 @@ h4,
 h5,
 h6 {
   line-height: 1;
+  color: #222;
 }
+
+p {
+  font-weight: 500;
+  color: #222;
+}
+
+/* body::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+} */

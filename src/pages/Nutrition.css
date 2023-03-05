@@ -1,0 +1,89 @@
+.nutrition {
+  display: flew;
+  flex-direction: column;
+
+}
+
+.nutrition__top {
+  position: sticky;
+  top: 0;
+  padding: 16px;
+  backdrop-filter: blur(4px);
+  background-color: #eeeeeeee;
+}
+
+.nutrition__icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nutrition__icon {
+  color: blue;
+  font-size: 32px;
+}
+
+.nutrition__heading {
+  padding: 8px 0;
+  font-size: 42px;
+}
+
+.nutrition__circles {
+  display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 40px;
+}
+
+.nutrition__protein,
+.nutrition__fat,
+.nutrition__carb {
+  position: relative;
+  width: 128px;
+  height: 128px;
+}
+
+.nutrition__protein::before,
+.nutrition__fat::before,
+.nutrition__carb::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 0;
+  mask: radial-gradient(farthest-side, #0000 calc(99% - 16px), #000 calc(100% - 16px));
+}
+
+.nutrition__protein::before {
+  background: conic-gradient(orange 60%, #0000 0),
+    #444;
+}
+
+.nutrition__fat::before {
+  background: conic-gradient(lightblue 30%, #0000 0),
+    #444;
+}
+
+.nutrition__carb::before {
+  background: conic-gradient(purple 80%, #0000 0),
+    #444;
+}
+
+.nutrition__grams {
+  position: absolute;
+  top: calc(50% - 8px);
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.nutrition__total {
+  position: absolute;
+  top: calc(50% + 12px);
+  left: 50%;
+  translate: -50% -50%;
+}
+
+.nutrition__label {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  translate: -50% -50%;
+}

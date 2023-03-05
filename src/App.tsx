@@ -4,6 +4,8 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Logs from "./pages/Logs";
+import Nutrition from "./pages/Nutrition";
+import Footer from "./pages/Footer";
 import "./App.css";
 
 function App() {
@@ -21,6 +23,7 @@ function App() {
         {/* Workout Log Page
         Includes workout logs, create a new workout, and progress graph */}
 
+        <Route path="/nutrition" element={<Nutrition />} />
         {/* Nutrition Page
         Calculates your calorires, macros, water, and weight goal */}
 
@@ -30,6 +33,7 @@ function App() {
         {/* Profile Page
         Has your split, diet info, ... */}
       </Routes>
+      {window.location.pathname !== "/" && <Footer />}
     </Router>
   );
 }

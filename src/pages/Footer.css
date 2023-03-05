@@ -1,0 +1,15 @@
+.footer {
+  position: fixed;
+  bottom: 0;
+  display: flex;
+  justify-content: space-evenly;
+  width: 100%;
+  backdrop-filter: blur(4px);
+  background-color: #eeeeeeee;
+}
+
+.footer__icon {
+  margin: 16px;
+  font-size: 32px;
+  color: #888;
+}
