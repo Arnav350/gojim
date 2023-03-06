@@ -1,14 +1,9 @@
-.logs {
-  display: flex;
-  flex-direction: column;
-}
-
 .logs__top {
   position: sticky;
   top: 0;
   padding: 16px;
   backdrop-filter: blur(4px);
-  background-color: #eeeeeeee;
+  background-color: #111e;
 }
 
 .logs__icons {
@@ -18,7 +13,7 @@
 }
 
 .logs__icon {
-  color: blue;
+  color: #487;
   font-size: 32px;
 }
 
@@ -28,6 +23,8 @@
 }
 
 .logs__list {
+  display: flex;
+  flex-direction: column;
   padding: 0 16px;
 }
 
@@ -38,19 +35,20 @@
   margin: 8px 0;
   width: 100%;
   height: 128px;
-  background-color: #ddd;
+  background-color: #222;
   border-radius: 16px;
 }
 
 .logs__plus {
   font-size: 128px;
+  color: #eee;
 }
 
 .log {
   display: flex;
   margin: 8px 0;
   padding: 8px;
-  background-color: #ddd;
+  background-color: #222;
   border-radius: 16px;
 }
 
@@ -71,6 +69,7 @@
 
 .log__box {
   padding: 8px;
+  overflow: hidden;
 }
 
 .log__title {
@@ -94,7 +93,6 @@
 }
 
 .log__exercise {
-  width: 90%;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

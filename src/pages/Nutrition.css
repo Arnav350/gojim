@@ -1,15 +1,10 @@
-.nutrition {
-  display: flew;
-  flex-direction: column;
-
-}
-
 .nutrition__top {
   position: sticky;
   top: 0;
   padding: 16px;
+  background-color: #111e;
   backdrop-filter: blur(4px);
-  background-color: #eeeeeeee;
+  z-index: 1;
 }
 
 .nutrition__icons {
@@ -19,7 +14,7 @@
 }
 
 .nutrition__icon {
-  color: blue;
+  color: #487;
   font-size: 32px;
 }
 
@@ -28,37 +23,60 @@
   font-size: 42px;
 }
 
+.nutrition__macros {
+  margin: 16px;
+}
+
+.nutrition__subheading {
+  font-size: 20px;
+  padding: 16px;
+}
+
 .nutrition__circles {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
-  margin-bottom: 40px;
+  padding: 16px 0;
+  background-color: #222;
+  border-radius: 16px;
 }
 
-.nutrition__protein,
-.nutrition__fat,
-.nutrition__carb {
+.nutrition__circle {
   position: relative;
-  width: 128px;
-  height: 128px;
+  width: 96px;
+  height: 96px;
+  margin-bottom: 32px;
 }
 
-.nutrition__protein::before,
-.nutrition__fat::before,
-.nutrition__carb::before {
+.nutrition__circle::before {
   content: "";
   position: absolute;
   border-radius: 50%;
   inset: 0;
-  mask: radial-gradient(farthest-side, #0000 calc(99% - 16px), #000 calc(100% - 16px));
+  mask: radial-gradient(farthest-side, #0000 calc(99% - 8px), #000 calc(100% - 8px));
 }
 
-.nutrition__protein::before {
-  background: conic-gradient(orange 60%, #0000 0),
+.nutrition__calorie::before {
+  background: conic-gradient(pink 20%, #0000 0),
     #444;
 }
 
+.nutrition__protein::before {
+  background: conic-gradient(orange 100%, #0000 0),
+    #444;
+}
+
+.nutrition__protein::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 0;
+  mask: radial-gradient(farthest-side, #0000 calc(99% - 8px), #000 calc(100% - 8px));
+  background: conic-gradient(darkorange 40%, #0000 0);
+}
+
 .nutrition__fat::before {
-  background: conic-gradient(lightblue 30%, #0000 0),
+  background: conic-gradient(turquoise 30%, #0000 0),
     #444;
 }
 
@@ -67,23 +85,125 @@
     #444;
 }
 
-.nutrition__grams {
+.nutrition__water::before {
+  background: conic-gradient(lightblue 80%, #0000 0),
+    #444;
+}
+
+.nutrition__grams,
+.nutrition__total {
   position: absolute;
-  top: calc(50% - 8px);
   left: 50%;
   translate: -50% -50%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.nutrition__grams {
+  top: calc(50% - 8px);
+  font-size: 18px;
 }
 
 .nutrition__total {
-  position: absolute;
-  top: calc(50% + 12px);
-  left: 50%;
-  translate: -50% -50%;
+  top: calc(50% + 10px);
+  font-size: 14px;
+  font-weight: 400;
 }
 
 .nutrition__label {
   position: absolute;
-  bottom: -40px;
+  bottom: -36px;
   left: 50%;
   translate: -50% -50%;
+}
+
+.nutrition__meals {
+  margin: 16px;
+  border-radius: 16px;
+}
+
+.nutrition__add {
+  padding: 16px;
+  background-color: #222;
+  border-radius: 16px;
+}
+
+.nutrition__title {
+  padding: 8px;
+  width: 100%;
+  font-size: 16px;
+  background-color: #222;
+  border: none;
+  border-bottom: 1px solid #eee;
+  outline: none;
+  font-weight: 600;
+}
+
+.nutrition__button {
+  margin-top: 8px;
+  padding: 8px;
+  width: 100%;
+  background-color: #487;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.meal {
+  margin: 16px 0;
+  padding: 16px;
+  background-color: #222;
+  border-radius: 16px;
+}
+
+.meal__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #222;
+}
+
+.meal__heading {
+  font-size: 18px;
+}
+
+.meal__total {
+  font-size: 16px;
+}
+
+.meal__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.meal__info {
+  max-width: 85%;
+}
+
+.meal__name {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.meal__amount {
+  color: #999;
+  font-size: 14px;
+}
+
+.meal__button {
+  padding: 8px;
+  width: 100%;
+  background-color: #487;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  font-size: 14px;
+  font-weight: 600;
 }

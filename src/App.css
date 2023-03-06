@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #000;
+}
+
 h1,
 h2,
 h3,
@@ -11,12 +15,14 @@ h4,
 h5,
 h6 {
   line-height: 1;
-  color: #222;
+  color: #eee;
 }
 
-p {
+p,
+button,
+input {
   font-weight: 500;
-  color: #222;
+  color: #eee;
 }
 
 /* body::-webkit-scrollbar {
