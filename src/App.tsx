@@ -5,6 +5,7 @@ import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Logs from "./pages/Logs";
 import Nutrition from "./pages/Nutrition";
+import Connect from "./pages/Connect";
 import Footer from "./pages/Footer";
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
         {/* Nutrition Page
         Calculates your calorires, macros, water, and weight goal */}
 
+        <Route path="/connect" element={<Connect />} />
         {/* Messaging and Stories Page
         Has stories, messaging feature (need to figure out how to add friends), pr competitions */}
 
