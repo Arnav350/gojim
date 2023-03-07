@@ -1,4 +1,5 @@
 import React from "react";
+import "../pages/Connect.css";
 
 function User() {
   return (

@@ -1,6 +1,9 @@
 .nutrition__top {
   position: fixed;
   top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 16px;
   width: 100%;
   background-color: #111e;
@@ -8,13 +11,7 @@
   z-index: 1;
 }
 
-.nutrition__icons {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.nutrition__icon {
+.nutrition__nav {
   color: #487;
   font-size: 32px;
 }
@@ -199,6 +196,7 @@
 }
 
 .meal__button {
+  margin-top: 8px;
   padding: 8px;
   width: 100%;
   background-color: #487;

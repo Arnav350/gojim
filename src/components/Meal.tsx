@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "../pages/Nutrition.css";
 
 function Meal() {
   return (
@@ -28,7 +30,9 @@ function Meal() {
         </div>
         <p className="meal__calorie">120</p>
       </div>
-      <button className="meal__button">Add Food</button>
+      <Link to="/food">
+        <button className="meal__button">Add Food</button>
+      </Link>
     </div>
   );
 }

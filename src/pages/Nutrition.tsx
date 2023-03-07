@@ -1,17 +1,18 @@
 import React from "react";
-import Meal from "./Meal";
-import { AiOutlineLineChart, AiOutlinePlus } from "react-icons/ai";
+import Meal from "../components/Meal";
+import { Link } from "react-router-dom";
+import { BsGraphUp, BsPlusLg } from "react-icons/bs";
 import "./Nutrition.css";
 
 function Nutrition() {
   return (
     <div className="nutrition">
       <div className="nutrition__top">
-        <div className="nutrition__icons">
-          <AiOutlineLineChart className="nutrition__icon" />
-          <h2 className="nutrition__heading">Nutrition</h2>
-          <AiOutlinePlus className="nutrition__icon" />
-        </div>
+        <BsGraphUp className="nutrition__nav" />
+        <h2 className="nutrition__heading">Nutrition</h2>
+        <Link to="/food">
+          <BsPlusLg className="nutrition__nav" />
+        </Link>
       </div>
       <div className="nutrition__macros">
         <h3 className="nutrition__subheading">Macros</h3>
@@ -51,7 +52,9 @@ function Nutrition() {
             placeholder="Meal Title..."
             className="nutrition__title"
           />
-          <button className="nutrition__button">Add Meal</button>
+          <Link to="/food">
+            <button className="nutrition__button">Add Meal</button>
+          </Link>
         </div>
         <Meal />
         <Meal />

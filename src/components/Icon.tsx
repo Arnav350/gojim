@@ -1,5 +1,5 @@
 import React from "react";
-import "./Connect.css";
+import "../pages/Connect.css";
 
 function Icon() {
   return (

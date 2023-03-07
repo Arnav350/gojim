@@ -1,7 +1,7 @@
 import React from "react";
-import Icon from "./Icon";
-import User from "./User";
-import { AiOutlineSearch, AiOutlinePlus } from "react-icons/ai";
+import Icon from "../components/Icon";
+import User from "../components/User";
+import { BsSearch, BsPlusLg } from "react-icons/bs";
 import "./Connect.css";
 
 function Connect() {
@@ -9,7 +9,7 @@ function Connect() {
     <div className="connect">
       <div className="connect__top">
         <div className="connect__search">
-          <AiOutlineSearch className="connect__icon" />
+          <BsSearch className="connect__magnify" />
           <input
             type="text"
             placeholder="Search user"
@@ -20,7 +20,7 @@ function Connect() {
       <div className="connect__stories">
         <div className="connect__outline">
           <div className="connect__new">
-            <AiOutlinePlus className="connect__plus" />
+            <BsPlusLg className="connect__plus" />
           </div>
           <p className="connect__add">Add story</p>
         </div>
