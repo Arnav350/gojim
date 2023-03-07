@@ -1,8 +1,9 @@
 .logs__top {
-  position: sticky;
+  position: fixed;
   top: 0;
   padding: 16px;
-  backdrop-filter: blur(4px);
+  width: 100%;
+  backdrop-filter: blur(6px);
   background-color: #111e;
 }
 
@@ -19,7 +20,7 @@
 
 .logs__heading {
   padding: 8px 0;
-  font-size: 42px;
+  font-size: 24px;
 }
 
 .logs__list {

@@ -10,9 +10,9 @@ function Logs() {
       <div className="logs__top">
         <div className="logs__icons">
           <AiOutlineLineChart className="logs__icon" />
+          <h2 className="logs__heading">Log</h2>
           <AiOutlinePlus className="logs__icon" />
         </div>
-        <h1 className="logs__heading">Log</h1>
       </div>
       <div className="logs__list">
         <div className="logs__new">

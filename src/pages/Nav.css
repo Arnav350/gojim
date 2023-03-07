@@ -1,4 +1,4 @@
-.footer {
+.nav {
   position: fixed;
   bottom: 0;
   display: flex;
@@ -8,7 +8,7 @@
   background-color: #111e;
 }
 
-.footer__icon {
+.nav__icon {
   margin: 16px;
   font-size: 32px;
   color: #888;

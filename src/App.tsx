@@ -6,7 +6,8 @@ import SignUp from "./pages/SignUp";
 import Logs from "./pages/Logs";
 import Nutrition from "./pages/Nutrition";
 import Connect from "./pages/Connect";
-import Footer from "./pages/Footer";
+import Profile from "./pages/Profile";
+import Nav from "./pages/Nav";
 import "./App.css";
 
 function App() {
@@ -32,10 +33,11 @@ function App() {
         {/* Messaging and Stories Page
         Has stories, messaging feature (need to figure out how to add friends), pr competitions */}
 
+        <Route path="/profile" element={<Profile />} />
         {/* Profile Page
         Has your split, diet info, ... */}
       </Routes>
-      {window.location.pathname !== "/" && <Footer />}
+      {window.location.pathname !== "/" && <Nav />}
     </Router>
   );
 }

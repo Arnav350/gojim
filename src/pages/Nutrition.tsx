@@ -9,9 +9,9 @@ function Nutrition() {
       <div className="nutrition__top">
         <div className="nutrition__icons">
           <AiOutlineLineChart className="nutrition__icon" />
+          <h2 className="nutrition__heading">Nutrition</h2>
           <AiOutlinePlus className="nutrition__icon" />
         </div>
-        <h1 className="nutrition__heading">Nutrition</h1>
       </div>
       <div className="nutrition__macros">
         <h3 className="nutrition__subheading">Macros</h3>

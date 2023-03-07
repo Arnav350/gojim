@@ -22,7 +22,7 @@ function Connect() {
           <div className="connect__new">
             <AiOutlinePlus className="connect__plus" />
           </div>
-          <p className="connect__add">Add story wwwy</p>
+          <p className="connect__add">Add story</p>
         </div>
         <Icon />
         <Icon />
