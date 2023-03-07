@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import History from "../components/History";
 import { Link } from "react-router-dom";
 import {
   BsArrowLeft,
   BsPencilSquare,
+  BsCheckLg,
   BsSearch,
   BsUpcScan,
   BsStopwatch,
@@ -12,6 +13,24 @@ import {
 import "./Food.css";
 
 function Food() {
+  const heading = useRef<HTMLDivElement>(null!);
+
+  const [edit, setEdit] = useState<boolean>(false);
+
+  function toggleHeadingEdit() {
+    if (edit) {
+      setEdit(false);
+      heading.current.contentEditable = "false";
+      heading.current.style.backgroundColor = "transparent";
+      heading.current.style.outline = "none";
+    } else {
+      setEdit(true);
+      heading.current.contentEditable = "true";
+      heading.current.style.backgroundColor = "black";
+      heading.current.style.outline = "2px solid #444";
+    }
+  }
+
   return (
     <div className="food">
       <div className="food__top">
@@ -19,8 +38,21 @@ function Food() {
           <Link to="/nutrition">
             <BsArrowLeft className="food__nav" />
           </Link>
-          <h2 className="food__heading">Meal Name</h2>
-          <BsPencilSquare className="food__nav" />
+          <h2
+            contentEditable="false"
+            suppressContentEditableWarning
+            className="food__heading"
+            ref={heading}
+          >
+            Meal Name
+          </h2>
+          <button className="food__edit" onClick={toggleHeadingEdit}>
+            {edit ? (
+              <BsCheckLg className="food__nav" />
+            ) : (
+              <BsPencilSquare className="food__nav" />
+            )}
+          </button>
         </div>
         <div className="food__search">
           <BsSearch className="food__magnify" />

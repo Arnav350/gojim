@@ -26,6 +26,12 @@ input {
   color: #eee;
 }
 
+button,
+input {
+  border: none;
+  outline: none;
+}
+
 /* body::-webkit-scrollbar {
   display: none;
 }

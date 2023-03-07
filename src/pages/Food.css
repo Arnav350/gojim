@@ -25,8 +25,16 @@
 }
 
 .food__heading {
-  padding: 8px 0;
+  padding: 8px 16px;
   font-size: 24px;
+  border-radius: 8px;
+}
+
+.food__edit {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
 }
 
 .food__search {
@@ -47,8 +55,6 @@
 .food__input {
   background-color: transparent;
   width: 100%;
-  border: none;
-  outline: none;
   font-size: 16px;
 }
 

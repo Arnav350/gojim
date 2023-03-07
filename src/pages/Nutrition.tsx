@@ -50,7 +50,7 @@ function Nutrition() {
           <input
             type="text"
             placeholder="Meal Title..."
-            className="nutrition__title"
+            className="nutrition__input"
           />
           <Link to="/food">
             <button className="nutrition__button">Add Meal</button>

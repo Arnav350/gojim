@@ -1,6 +1,6 @@
 import React from "react";
 import { FaClock, FaWeightHanging } from "react-icons/fa";
-import "../pages/Logs.css";
+import "../pages/Workout";
 
 function Log() {
   return (
