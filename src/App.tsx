@@ -35,7 +35,7 @@ function App() {
 
         <Route path="/profile" element={<Profile />} />
         {/* Profile Page
-        Has your split, diet info, ... */}
+        Has your split, diet info, has videos of your maxes saved for each milestone */}
       </Routes>
       {window.location.pathname !== "/" && <Nav />}
     </Router>

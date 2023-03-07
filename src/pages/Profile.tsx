@@ -22,19 +22,25 @@ function Profile() {
           </div>
           <div className="profile__stats">
             <div className="profile__stat">
-              <p>Workouts</p>
+              <p className="profile__label">Workouts</p>
               <h4 className="profile__number">2352</h4>
             </div>
             <div className="profile__stat">
-              <p>Friends</p>
+              <p className="profile__label">Friends</p>
               <h4 className="profile__number">2</h4>
             </div>
           </div>
         </div>
       </div>
       <div className="profile__buttons">
-        <button className="profile__edit">Edit Profile</button>
-        <button className="profile__share">Share Profile</button>
+        <button className="profile__button">Edit Profile</button>
+        <button className="profile__button">Share Profile</button>
+      </div>
+      <div className="profile__maxes">
+        <h3 className="profile__subheading">Maxes</h3>
+        <p>Bench - 255</p>
+        <p>Squat - 315</p>
+        <p>Deadlift - 1000</p>
       </div>
     </div>
   );
