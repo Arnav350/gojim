@@ -10,9 +10,12 @@ function Exercise() {
         <p className="exercise__more">II</p>
       </div>
       <div className="exercise__row">
-        <h4 className="exercise__subtitle">Set</h4>
-        <h4 className="exercise__subtitle">Weight</h4>
-        <h4 className="exercise__subtitle">Reps</h4>
+        <div className="exercise__">
+          <h4 className="exercise__subtitle">Set</h4>
+          <h4 className="exercise__subtitle">Weight</h4>
+          <h4 className="exercise__subtite">Reps</h4>
+        </div>
+        <h4 className="exercise__notes">Notes</h4>
       </div>
       <div className="exercise__sets">
         <Set />

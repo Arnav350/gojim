@@ -88,12 +88,28 @@
 
 .exercise__row {
   display: flex;
-  justify-content: space-between;
 }
+
+/* 
+.exercise__ {
+  width: 144px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.set__ {
+  width: 144px;
+  display: flex;
+  justify-content: space-evenly;
+} */
 
 /* .exercise__subtitle {
 
 } */
+
+.exercise__notes {
+  flex-grow: 1;
+}
 
 .exercise__sets {
   display: flex;
@@ -103,4 +119,14 @@
 .set {
   display: flex;
   justify-content: space-between;
+}
+
+/* .set__set {
+
+} */
+
+.set__weight,
+.set__reps,
+.set__notes {
+  background-color: transparent;
 }
