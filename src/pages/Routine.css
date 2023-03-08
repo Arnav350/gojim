@@ -9,8 +9,98 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 16px;
+  padding: 16px 8px;
   width: 100%;
   backdrop-filter: blur(6px);
   background-color: #111e;
+}
+
+.routine__navs {
+  display: flex;
+}
+
+.routine__nav {
+  margin: 4px;
+  color: #487;
+  font-size: 28px;
+}
+
+.routine__heading {
+  padding: 8px;
+  width: 100%;
+  background-color: transparent;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.routine__edit {
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+  border: none;
+}
+
+.routine__search {
+  display: flex;
+  width: 80%;
+  margin: 8px;
+  padding: 8px;
+  background-color: black;
+  border-radius: 18px;
+}
+
+.routine__finish {
+  margin: 4px;
+  background-color: #487;
+  padding: 0 8px;
+  border-radius: 8px;
+  font-size: 12px;
+}
+
+.routine__exercises {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  margin-top: 120px;
+}
+
+.exercise {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  background-color: #161616;
+  border-radius: 16px;
+}
+
+.exercise__top {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .exercise__name {
+
+}
+
+.exercise__more {
+
+} */
+
+.exercise__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* .exercise__subtitle {
+
+} */
+
+.exercise__sets {
+  display: flex;
+  flex-direction: column;
+}
+
+.set {
+  display: flex;
+  justify-content: space-between;
 }
