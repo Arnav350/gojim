@@ -13,21 +13,19 @@ import {
 import "./Food.css";
 
 function Food() {
-  const heading = useRef<HTMLDivElement>(null!);
+  const heading = useRef<HTMLInputElement>(null!);
 
   const [edit, setEdit] = useState<boolean>(false);
+  const [inp, setInp] = useState<string>("Meal Name");
 
   function toggleHeadingEdit() {
     if (edit) {
       setEdit(false);
-      heading.current.contentEditable = "false";
-      heading.current.style.backgroundColor = "transparent";
-      heading.current.style.outline = "none";
+      heading.current.readOnly = true;
     } else {
       setEdit(true);
-      heading.current.contentEditable = "true";
-      heading.current.style.backgroundColor = "black";
-      heading.current.style.outline = "2px solid #444";
+      heading.current.readOnly = false;
+      heading.current.select();
     }
   }
 
@@ -38,14 +36,15 @@ function Food() {
           <Link to="/nutrition">
             <BsArrowLeft className="food__nav" />
           </Link>
-          <h2
-            contentEditable="false"
-            suppressContentEditableWarning
+          <input
+            type="text"
+            placeholder="Meal Name"
+            value={inp}
+            readOnly={true}
             className="food__heading"
             ref={heading}
-          >
-            Meal Name
-          </h2>
+            onChange={(event) => setInp(event.target.value)}
+          />
           <button className="food__edit" onClick={toggleHeadingEdit}>
             {edit ? (
               <BsCheckLg className="food__nav" />

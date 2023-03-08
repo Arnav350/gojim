@@ -99,13 +99,13 @@
 }
 
 .nutrition__grams {
-  top: calc(50% - 8px);
+  top: calc(50% - 6px);
   font-size: 18px;
 }
 
 .nutrition__total {
   top: calc(50% + 10px);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 400;
 }
 

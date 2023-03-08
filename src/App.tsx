@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Workout from "./pages/Workout";
+import Routine from "./pages/Routine";
 import Nutrition from "./pages/Nutrition";
 import Food from "./pages/Food";
 import Connect from "./pages/Connect";
@@ -22,7 +23,8 @@ function App() {
 
         {/* Protected Routes */}
 
-        <Route path="/logs" element={<Workout />} />
+        <Route path="/workout" element={<Workout />} />
+        <Route path="/routine" element={<Routine />} />
         {/* Workout Log Page
         Includes workout logs, create a new workout, and progress graph */}
 

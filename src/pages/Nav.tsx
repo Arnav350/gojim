@@ -6,7 +6,7 @@ import "./Nav.css";
 function Nav() {
   return (
     <div className="nav">
-      <Link to="/logs">
+      <Link to="/workout">
         <FaDumbbell className="nav__icon" />
       </Link>
       <Link to="/nutrition">
