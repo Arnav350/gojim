@@ -30,7 +30,7 @@ function Routine() {
       <div className="routine__top">
         <div className="routine__navs">
           <BsChevronDown className="routine__nav" />
-          <button className="routine__finish">Finish</button>
+          <BsAlarm className="routine__nav" />
         </div>
         <input
           type="text"
@@ -49,7 +49,7 @@ function Routine() {
               <BsPencilSquare className="routine__nav" />
             )}
           </button>
-          <BsAlarm className="routine__nav" />
+          <button className="routine__finish">Finish</button>
         </div>
       </div>
       <div className="routine__exercises">

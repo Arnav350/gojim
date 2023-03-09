@@ -68,7 +68,8 @@
 .exercise {
   display: flex;
   flex-direction: column;
-  padding: 16px;
+  margin: 8px 0;
+  padding: 8px;
   background-color: #161616;
   border-radius: 16px;
 }
@@ -76,6 +77,7 @@
 .exercise__top {
   display: flex;
   justify-content: space-between;
+  padding: 8px;
 }
 
 /* .exercise__name {
@@ -88,32 +90,35 @@
 
 .exercise__row {
   display: flex;
+  padding: 4px 8px;
 }
 
-/* 
-.exercise__ {
-  width: 144px;
+
+.exercise__box {
+  /* width: 144px; */
   display: flex;
-  justify-content: space-evenly;
 }
 
-.set__ {
-  width: 144px;
-  display: flex;
-  justify-content: space-evenly;
-} */
+.exercise__set {
+  /*  */
+}
 
-/* .exercise__subtitle {
+.exercise__weight {
+  /*  */
+}
 
-} */
+.exercise__reps {
+  /*  */
+}
 
 .exercise__notes {
-  flex-grow: 1;
+  /*  */
 }
 
 .exercise__sets {
   display: flex;
   flex-direction: column;
+  padding: 8px;
 }
 
 .set {
@@ -121,12 +126,26 @@
   justify-content: space-between;
 }
 
-/* .set__set {
+.set__box {
+  width: 144px;
+  display: flex;
+  align-items: center;
+}
 
-} */
+.set__set {
+  font-size: 14px;
+}
 
 .set__weight,
 .set__reps,
 .set__notes {
   background-color: transparent;
+  font-size: 14px;
+}
+
+.exercise__add {
+  margin-top: 4px;
+  padding: 8px;
+  background-color: transparent;
+  border-top: 1px solid #999;
 }
