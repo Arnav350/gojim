@@ -66,3 +66,16 @@
   border-radius: 20px;
   font-size: 14px;
 }
+
+.chat__messages {
+  margin-top: 200px;
+}
+
+.message__box {
+  background-color: #161616;
+  width: 240px;
+}
+
+.message__text {}
+
+.message__date {}
