@@ -15,13 +15,15 @@ function Workout() {
       <div className="workout__top">
         <BsGraphUp className="workout__nav" />
         <h2 className="workout__heading">Workout</h2>
-        <BsPlusLg className="workout__nav" />
+        <Link to="/routine">
+          <BsPlusLg className="workout__nav" />
+        </Link>
       </div>
       <div className="workout__box">
-        <button className="workout__empty">
+        <Link to="/routine" className="workout__empty">
           <BsPlusLg className="workout__plus" />
           <h4 className="workout__subtitle">Start Empty Workout</h4>
-        </button>
+        </Link>
         <div className="workout__routines">
           <button className="workout__routine">
             <BsClipboard2Plus className="workout__icon" />

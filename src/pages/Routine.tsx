@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Exercise from "../components/Exercise";
+import { Link } from "react-router-dom";
 import {
   BsChevronDown,
   BsPencilSquare,
@@ -49,7 +50,9 @@ function Routine() {
               <BsPencilSquare className="routine__nav" />
             )}
           </button>
-          <button className="routine__finish">Finish</button>
+          <Link to="/workout" className="routine__finish">
+            Finish
+          </Link>
         </div>
       </div>
       <div className="routine__exercises">

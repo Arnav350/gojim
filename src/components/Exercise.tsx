@@ -11,9 +11,9 @@ function Exercise() {
       </div>
       <div className="exercise__row">
         <div className="exercise__box">
-          <h4 className="exercise__set">Set</h4>
-          <h4 className="exercise__weight">Weight</h4>
-          <h4 className="exercise__reps">Reps</h4>
+          <h4 className="exercise__subtitle">Set</h4>
+          <h4 className="exercise__subtitle">Weight</h4>
+          <h4 className="exercise__subtitle">Reps</h4>
         </div>
         <h4 className="exercise__notes">Notes</h4>
       </div>

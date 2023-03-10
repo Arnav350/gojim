@@ -51,11 +51,15 @@
 }
 
 .routine__finish {
+  display: flex;
+  align-items: center;
   margin: 4px;
   background-color: #487;
   padding: 0 8px;
   border-radius: 8px;
+  color: #eee;
   font-size: 12px;
+  text-decoration: none;
 }
 
 .routine__exercises {
@@ -97,23 +101,17 @@
 .exercise__box {
   /* width: 144px; */
   display: flex;
+  gap: 8px;
+  padding-right: 8px;
 }
 
-.exercise__set {
-  /*  */
-}
-
-.exercise__weight {
-  /*  */
-}
-
-.exercise__reps {
-  /*  */
+/* .exercise__subtitle {
+  
 }
 
 .exercise__notes {
-  /*  */
-}
+  
+} */
 
 .exercise__sets {
   display: flex;
@@ -130,10 +128,14 @@
   width: 144px;
   display: flex;
   align-items: center;
+  gap: 8px;
+  padding-right: 8px;
 }
 
-.set__set {
-  font-size: 14px;
+.set__set,
+.set__weight,
+.set__reps {
+  text-align: center;
 }
 
 .set__weight,
@@ -141,6 +143,23 @@
 .set__notes {
   background-color: transparent;
   font-size: 14px;
+}
+
+.set__set {
+  font-size: 14px;
+  width: 23px;
+}
+
+.set__weight {
+  width: 52.46px;
+}
+
+.set__reps {
+  width: 34.59px;
+}
+
+.set__notes {
+  width: 100%;
 }
 
 .exercise__add {
