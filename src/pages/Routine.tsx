@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import Exercise from "../components/Exercise";
+import Clock from "../components/Clock";
 import { Link } from "react-router-dom";
 import {
   BsChevronDown,
@@ -61,6 +62,7 @@ function Routine() {
         <Exercise />
       </div>
       <button className="routine__add"></button>
+      {/* <Clock /> */}
     </div>
   );
 }

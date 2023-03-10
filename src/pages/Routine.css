@@ -168,3 +168,121 @@
   background-color: transparent;
   border-top: 1px solid #999;
 }
+
+.clock {
+  position: fixed;
+  top: 32px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  background-color: #000b;
+}
+
+.clock__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  width: 100%;
+}
+
+.clock__nav {
+  color: #487;
+  font-size: 32px;
+}
+
+.clock__heading {
+  padding: 8px 0;
+  font-size: 24px;
+}
+
+.clock__circle {
+  position: relative;
+  margin: 16px;
+  width: 256px;
+  height: 256px;
+}
+
+.clock__circle::before {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  inset: 0;
+  background: conic-gradient(#487 40%, #0000 0),
+    #444;
+  mask: radial-gradient(farthest-side, #0000 calc(99% - 12px), #000 calc(100% - 12px));
+}
+
+.clock__time {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  font-size: 48px;
+}
+
+.clock__buttons {
+  display: flex;
+  margin: 16px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.clock__secondary,
+.clock__primary {
+  padding: 16px;
+  width: 128px;
+  font-size: 18px;
+}
+
+.clock__secondary {
+  background-color: #eee;
+  color: #487;
+}
+
+.clock__primary {
+  background-color: #487;
+}
+
+.clock__timers {
+  display: flex;
+  padding: 16px;
+  width: 100%;
+  overflow: scroll;
+}
+
+.clock__edit,
+.timer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 4px;
+  height: 64px;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  background-color: #161616;
+}
+
+.clock__pencil {
+  color: #eee;
+  font-size: 24px;
+}
+
+.timer__time {
+  font-size: 18px;
+}
+
+.clock__change {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  bottom: 0;
+}
+
+.clock__operator {
+  background-color: transparent;
+  color: #487;
+  font-size: 20px;
+}
