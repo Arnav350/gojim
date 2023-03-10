@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "../pages/Connect.css";
 
 function User() {
   return (
-    <div className="user">
+    <Link to="/chat" className="user">
       <img src="https://picsum.photos/200" alt="" className="user__picture" />
       <div className="user__text">
         <div className="user__top">
@@ -17,7 +18,7 @@ function User() {
           eligendi?
         </p>
       </div>
-    </div>
+    </Link>
   );
 }
 

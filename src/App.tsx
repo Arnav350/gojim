@@ -8,6 +8,7 @@ import Routine from "./pages/Routine";
 import Nutrition from "./pages/Nutrition";
 import Food from "./pages/Food";
 import Connect from "./pages/Connect";
+import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import Nav from "./pages/Nav";
 import "./App.css";
@@ -34,6 +35,7 @@ function App() {
         Calculates your calorires, macros, water, and weight goal */}
 
         <Route path="/connect" element={<Connect />} />
+        <Route path="/chat" element={<Chat />} />
         {/* Messaging and Stories Page
         Has stories, messaging feature (need to figure out how to add friends), pr competitions */}
 
