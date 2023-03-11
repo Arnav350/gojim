@@ -11,19 +11,20 @@ import {
 import "./Routine.css";
 
 function Routine() {
-  const heading = useRef<HTMLInputElement>(null!);
+  const headingRef = useRef<HTMLInputElement>(null!);
 
-  const [edit, setEdit] = useState<boolean>(false);
-  const [inp, setInp] = useState<string>("Workout Name");
+  const [headingEditable, setHeadingEditable] = useState<boolean>(false);
+  const [workoutName, setWorkoutName] = useState<string>("Workout Name");
+  const [showClock, setShowClock] = useState<boolean>(false);
 
   function toggleHeadingEdit() {
-    if (edit) {
-      setEdit(false);
-      heading.current.readOnly = true;
+    if (headingEditable) {
+      setHeadingEditable(false);
+      headingRef.current.readOnly = true;
     } else {
-      setEdit(true);
-      heading.current.readOnly = false;
-      heading.current.select();
+      setHeadingEditable(true);
+      headingRef.current.readOnly = false;
+      headingRef.current.select();
     }
   }
 
@@ -32,20 +33,23 @@ function Routine() {
       <div className="routine__top">
         <div className="routine__navs">
           <BsChevronDown className="routine__nav" />
-          <BsAlarm className="routine__nav" />
+          <BsAlarm
+            className="routine__nav"
+            onClick={() => setShowClock(true)}
+          />
         </div>
         <input
           type="text"
           placeholder="Workout Name"
-          value={inp}
+          value={workoutName}
           readOnly={true}
           className="routine__heading"
-          ref={heading}
-          onChange={(event) => setInp(event.target.value)}
+          ref={headingRef}
+          onChange={(event) => setWorkoutName(event.target.value)}
         />
         <div className="routine__navs">
           <button className="routine__edit" onClick={toggleHeadingEdit}>
-            {edit ? (
+            {headingEditable ? (
               <BsCheckLg className="routine__nav" />
             ) : (
               <BsPencilSquare className="routine__nav" />
@@ -62,7 +66,7 @@ function Routine() {
         <Exercise />
       </div>
       <button className="routine__add"></button>
-      {/* <Clock /> */}
+      {showClock && <Clock setShowClock={setShowClock} />}
     </div>
   );
 }

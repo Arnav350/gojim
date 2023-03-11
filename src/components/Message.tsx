@@ -2,24 +2,25 @@ import React from "react";
 
 function Message() {
   return (
-    <div className="message">
+    <div className="my message">
       {true && (
         <div className="message__box">
           <p className="message__text">
-            Lorem, ipsum dolor sit amet consectetur adipisicing.
+            Lorem ipsu
+            <span className="message__space">1:00 PM</span>
           </p>
-          <p className="message__date">1:00 pm</p>
+          <p className="message__date">1:00 PM</p>
         </div>
       )}
-      {false && (
-        <div className="message__box">
+      {true && (
+        <figure className="message__figure">
           <img
             src="https://picsum.photos/400"
             alt=""
             className="message__image"
           />
-          <p className="message__date"></p>
-        </div>
+          <figcaption className="message__caption">1:00 PM</figcaption>
+        </figure>
       )}
     </div>
   );

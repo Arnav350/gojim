@@ -73,10 +73,13 @@
 
 .message {
   display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  margin: 8px;
 }
 
 .message__box {
-  margin: 8px;
   padding: 8px 16px;
   max-width: 80%;
   background-color: #161616;
@@ -84,11 +87,72 @@
 }
 
 .message__text {
-  min-width: 0;
-  display: inline-block;
+  font-weight: 400;
+}
+
+.message__date,
+.message__caption {
+  color: #eeea;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .message__date {
-  display: inline-block;
-  margin-left: auto;
+  float: right;
+  margin: -12px -8px -4px 0;
+}
+
+.message__space {
+  visibility: hidden;
+}
+
+.message__figure {
+  position: relative;
+  max-width: 80%;
+  background-color: #161616;
+  border-radius: 0 16px 16px 16px;
+  overflow: hidden;
+}
+
+.message__image {
+  width: 100%;
+  border: 4px solid #161616;
+  border-radius: 16px;
+  vertical-align: bottom;
+}
+
+.message__figure::after {
+  content: '';
+  position: absolute;
+  bottom: -76px;
+  right: 40px;
+  width: 48px;
+  height: 160px;
+  background: linear-gradient(to left, #000, #0000);
+  rotate: 70deg;
+}
+
+.message__caption {
+  position: absolute;
+  right: 12px;
+  bottom: 8px;
+  z-index: 1;
+}
+
+.my {
+  align-items: flex-end;
+}
+
+.my .message__box {
+  background-color: #487;
+  border-radius: 8px 0 8px 8px;
+}
+
+.my .message__figure {
+  background-color: #487;
+  border-radius: 16px 0 16px 16px;
+}
+
+.my .message__image {
+  border: 4px solid #487;
 }
