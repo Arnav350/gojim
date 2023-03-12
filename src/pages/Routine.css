@@ -66,11 +66,21 @@
   overflow-y: auto;
 }
 
+.routine__add {
+  margin: 8px 0;
+  padding: 8px;
+  background-color: #487;
+  font-size: 16px;
+  border-radius: 16px;
+}
+
+/* .calculator */
+
 .exercise {
   display: flex;
   flex-direction: column;
   margin: 8px 0;
-  padding: 8px;
+  padding: 12px 8px;
   background-color: #161616;
   border-radius: 16px;
 }
@@ -78,16 +88,20 @@
 .exercise__top {
   display: flex;
   justify-content: space-between;
-  padding: 8px;
+  gap: 4px;
+  padding: 4px 8px;
 }
 
-/* .exercise__name {
-
+.exercise__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .exercise__more {
-
-} */
+  color: #eee;
+  font-size: 20px;
+}
 
 .exercise__row {
   display: flex;
@@ -113,7 +127,7 @@
 .exercise__sets {
   display: flex;
   flex-direction: column;
-  padding: 8px;
+  padding: 4px 8px;
 }
 
 .set {
@@ -161,7 +175,7 @@
 
 .exercise__add {
   margin-top: 4px;
-  padding: 8px;
+  padding: 4px 8px;
   background-color: transparent;
   border-top: 1px solid #999;
 }

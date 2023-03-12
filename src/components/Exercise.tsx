@@ -1,5 +1,6 @@
 import React from "react";
 import Set from "./Set";
+import { BsThreeDots } from "react-icons/bs";
 import "../pages/Routine.css";
 
 function Exercise() {
@@ -7,7 +8,7 @@ function Exercise() {
     <div className="exercise">
       <div className="exercise__top">
         <h3 className="exercise__name">Bicep Curl</h3>
-        <p className="exercise__more">II</p>
+        <BsThreeDots className="exercise__more" />
       </div>
       <div className="exercise__row">
         <div className="exercise__box">

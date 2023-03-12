@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
-import Exercise from "../components/Exercise";
+import Calculator from "../components/Calculator";
 import Clock from "../components/Clock";
+import Exercise from "../components/Exercise";
 import { Link } from "react-router-dom";
 import {
   BsChevronDown,
@@ -66,8 +67,9 @@ function Routine() {
         <Exercise />
         <Exercise />
         <Exercise />
+        <button className="routine__add">Add Exercise</button>
       </div>
-      <button className="routine__add"></button>
+      <Calculator />
       {showClock && <Clock setShowClock={setShowClock} />}
     </main>
   );
