@@ -12,8 +12,8 @@ import "./Chat.css";
 
 function Chat() {
   return (
-    <div className="chat">
-      <div className="chat__top">
+    <main className="chat">
+      <header className="chat__top">
         <div className="chat__navs">
           <BsChevronLeft className="chat__nav" />
           <div className="chat__profile">
@@ -29,8 +29,12 @@ function Chat() {
           <BsTelephone className="chat__nav" />
           <BsCameraVideo className="chat__nav" />
         </div>
-      </div>
+      </header>
       <div className="chat__messages">
+        <Message />
+        <Message />
+        <Message />
+        <Message />
         <Message />
       </div>
       <div className="chat__input">
@@ -39,7 +43,7 @@ function Chat() {
         <BsMic className="chat__icon" />
         <BsImage className="chat__icon" />
       </div>
-    </div>
+    </main>
   );
 }
 

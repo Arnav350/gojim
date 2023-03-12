@@ -1,15 +1,12 @@
 .nav {
-  position: fixed;
-  bottom: 0;
   display: flex;
   justify-content: space-evenly;
   width: 100%;
-  backdrop-filter: blur(4px);
-  background-color: #111e;
+  background-color: #111;
 }
 
 .nav__icon {
   margin: 16px;
   font-size: 32px;
-  color: #888;
+  color: #eeea;
 }

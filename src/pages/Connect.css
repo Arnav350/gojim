@@ -4,15 +4,11 @@
 }
 
 .connect__top {
-  position: fixed;
-  top: 0;
   display: flex;
   justify-content: center;
   padding: 16px;
   width: 100%;
-  background-color: #111e;
-  backdrop-filter: blur(6px);
-  z-index: 1;
+  background-color: #111;
 }
 
 .connect__search {
@@ -35,11 +31,17 @@
   font-size: 16px;
 }
 
+.connect__scroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
 .connect__stories {
   display: flex;
   padding: 16px 0 48px 8px;
   border-bottom: 1px solid #444;
-  overflow-x: scroll;
+  /* overflow-x: scroll; */
 }
 
 .connect__outline,
@@ -123,7 +125,7 @@
   font-size: 14px;
   font-weight: 400;
   height: 40px;
-  color: #999;
+  color: #eeea;
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;

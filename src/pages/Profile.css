@@ -1,24 +1,25 @@
 .profile {
   display: flex;
   flex-direction: column;
-  padding-top: 80px;
 }
 
 .profile__top {
-  position: fixed;
-  top: 0;
   display: flex;
   justify-content: space-between;
   padding: 16px;
   width: 100%;
-  background-color: #111e;
-  backdrop-filter: blur(6px);
-  z-index: 1;
+  background-color: #111;
 }
 
 .profile__heading {
   padding: 8px 0;
   font-size: 24px;
+}
+
+.profile__scroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .profile__user {

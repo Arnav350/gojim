@@ -29,8 +29,8 @@ function Routine() {
   }
 
   return (
-    <div className="routine">
-      <div className="routine__top">
+    <main className="routine">
+      <header className="routine__top">
         <div className="routine__navs">
           <BsChevronDown className="routine__nav" />
           <BsAlarm
@@ -59,15 +59,17 @@ function Routine() {
             Finish
           </Link>
         </div>
-      </div>
+      </header>
       <div className="routine__exercises">
+        <Exercise />
+        <Exercise />
         <Exercise />
         <Exercise />
         <Exercise />
       </div>
       <button className="routine__add"></button>
       {showClock && <Clock setShowClock={setShowClock} />}
-    </div>
+    </main>
   );
 }
 

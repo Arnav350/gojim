@@ -4,15 +4,11 @@
 }
 
 .chat__top {
-  position: fixed;
-  top: 0;
   display: flex;
   justify-content: space-between;
   padding: 16px;
   width: 100%;
-  background-color: #111e;
-  backdrop-filter: blur(6px);
-  z-index: 1;
+  background-color: #111;
 }
 
 .chat__navs {
@@ -68,7 +64,9 @@
 }
 
 .chat__messages {
-  margin-top: 200px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .message {
