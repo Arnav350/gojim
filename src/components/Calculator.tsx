@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { BsXLg } from "react-icons/bs";
 
 function Calculator() {
+  const [barWeight, setBarWeight] = useState<number>(9);
+
   return (
     <div className="calculator">
       <header className="calculator__top">
@@ -22,8 +24,11 @@ function Calculator() {
               min="0"
               max="11"
               className="calculator__slider"
+              onChange={(event) => setBarWeight(Number(event.target.value))}
             />
-            <h5 className="calculator__number">2</h5>
+            <h5 className="calculator__weight calculator__number">
+              {barWeight * 5} lbs
+            </h5>
           </div>
           <div className="calculator__box">
             <h5 className="calculator__1 calculator__plate">55</h5>
@@ -50,7 +55,7 @@ function Calculator() {
             <h5 className="calculator__number">2</h5>
           </div>
           <div className="calculator__box">
-            <h5 className="calculator__7 calculator__plate">12.5</h5>
+            <h5 className="calculator__7 calculator__plate">2.5</h5>
             <h5 className="calculator__number">2</h5>
           </div>
         </div>
