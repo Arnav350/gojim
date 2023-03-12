@@ -10,13 +10,11 @@ function Exercise() {
         <h3 className="exercise__name">Bicep Curl</h3>
         <BsThreeDots className="exercise__more" />
       </div>
-      <div className="exercise__row">
-        <div className="exercise__box">
-          <h4 className="exercise__subtitle">Set</h4>
-          <h4 className="exercise__subtitle">Weight</h4>
-          <h4 className="exercise__subtitle">Reps</h4>
-        </div>
-        <h4 className="exercise__notes">Notes</h4>
+      <div className="exercise__subtitles">
+        <h4 className="exercise__subtitle">Set</h4>
+        <h4 className="exercise__subtitle">Weight</h4>
+        <h4 className="exercise__subtitle">Reps</h4>
+        <h4 className="exercise__subtitle">Notes</h4>
       </div>
       <div className="exercise__sets">
         <Set />

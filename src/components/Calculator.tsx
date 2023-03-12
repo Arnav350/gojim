@@ -1,27 +1,58 @@
 import React from "react";
+import { BsXLg } from "react-icons/bs";
 
 function Calculator() {
   return (
-    <div className="claculator">
-      <div className="calculator__top">
-        <p className="calculator__icon">II</p>
+    <div className="calculator">
+      <header className="calculator__top">
+        <h4 className="calculator__unit">Lbs</h4>
         <h3 className="calculator__heading">Plate Calculator</h3>
-        <h4 className="calculator__metric">Lbs</h4>
-      </div>
-      <div className="calculator__box">
+        <BsXLg className="calculator__icon" />
+      </header>
+      <div className="calculator__container">
+        <h2 className="calculator__total">400</h2>
         <div className="calculator__subtitles">
           <h5 className="calculator__subtitle">Bar</h5>
-          <h5 className="calculator__subtitle">Plates</h5>
+          <h5 className="calculator__subtitle">Plates (each side)</h5>
         </div>
         <div className="calculator__weights">
-          <div className="calculator__bar"></div>
-          <div className="calculator__1"></div>
-          <div className="calculator__2"></div>
-          <div className="calculator__3"></div>
-          <div className="calculator__4"></div>
-          <div className="calculator__5"></div>
-          <div className="calculator__6"></div>
-          <div className="calculator__7"></div>
+          <div className="calculator__bar">
+            <input
+              type="range"
+              min="0"
+              max="11"
+              className="calculator__slider"
+            />
+            <h5 className="calculator__number">2</h5>
+          </div>
+          <div className="calculator__box">
+            <h5 className="calculator__1 calculator__plate">55</h5>
+            <h5 className="calculator__number">2</h5>
+          </div>
+          <div className="calculator__box">
+            <h5 className="calculator__2 calculator__plate">45</h5>
+            <h5 className="calculator__number">2</h5>
+          </div>
+          <div className="calculator__box">
+            <h5 className="calculator__3 calculator__plate">35</h5>
+            <h5 className="calculator__number">2</h5>
+          </div>
+          <div className="calculator__box">
+            <h5 className="calculator__4 calculator__plate">25</h5>
+            <h5 className="calculator__number">2</h5>
+          </div>
+          <div className="calculator__box">
+            <h5 className="calculator__5 calculator__plate">10</h5>
+            <h5 className="calculator__number">2</h5>
+          </div>
+          <div className="calculator__box">
+            <h5 className="calculator__6 calculator__plate">5</h5>
+            <h5 className="calculator__number">2</h5>
+          </div>
+          <div className="calculator__box">
+            <h5 className="calculator__7 calculator__plate">12.5</h5>
+            <h5 className="calculator__number">2</h5>
+          </div>
         </div>
       </div>
     </div>
