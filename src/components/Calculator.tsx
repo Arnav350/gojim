@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { BsXLg } from "react-icons/bs";
 
 function Calculator() {
@@ -53,11 +53,16 @@ function Calculator() {
     }
   }
 
-  function handleClick(plateElem: HTMLHeadingElement) {
-    if (plateElem.style.opacity === "0.1") {
-      plateElem.style.opacity = "1";
-    } else {
-      plateElem.style.opacity = "0.1";
+  function handleClick(plateIndex: number) {
+    const plateElem = document.querySelector<HTMLHeadingElement>(
+      `.calculator__${plateIndex}`
+    );
+    if (plateElem) {
+      if (plateElem.style.opacity === "0.1") {
+        plateElem.style.opacity = "1";
+      } else {
+        plateElem.style.opacity = "0.1";
+      }
     }
     handleTotalBlur();
   }
@@ -66,14 +71,6 @@ function Calculator() {
     setBarValue(barWeight);
     handleTotalBlur();
   }
-
-  useEffect(() => {
-    const plateElems =
-      document.querySelectorAll<HTMLHeadingElement>(".calculator__plate");
-    for (let i = 0; i < plateWeights.length; i++) {
-      plateElems[i].addEventListener("click", () => handleClick(plateElems[i]));
-    }
-  }, [plateWeights.length]);
 
   return (
     <div className="calculator">
@@ -107,62 +104,21 @@ function Calculator() {
               {barValue * 5} lbs
             </h5>
           </div>
-          <div className="calculator__box">
-            <h5 className="calculator__0 calculator__plate">55</h5>
-            <input
-              type="number"
-              className="calculator__number"
-              onBlur={handleNumberBlur}
-            />
-          </div>
-          <div className="calculator__box">
-            <h5 className="calculator__1 calculator__plate">45</h5>
-            <input
-              type="number"
-              className="calculator__number"
-              onBlur={handleNumberBlur}
-            />
-          </div>
-          <div className="calculator__box">
-            <h5 className="calculator__2 calculator__plate">35</h5>
-            <input
-              type="number"
-              className="calculator__number"
-              onBlur={handleNumberBlur}
-            />
-          </div>
-          <div className="calculator__box">
-            <h5 className="calculator__3 calculator__plate">25</h5>
-            <input
-              type="number"
-              className="calculator__number"
-              onBlur={handleNumberBlur}
-            />
-          </div>
-          <div className="calculator__box">
-            <h5 className="calculator__4 calculator__plate">10</h5>
-            <input
-              type="number"
-              className="calculator__number"
-              onBlur={handleNumberBlur}
-            />
-          </div>
-          <div className="calculator__box">
-            <h5 className="calculator__5 calculator__plate">5</h5>
-            <input
-              type="number"
-              className="calculator__number"
-              onBlur={handleNumberBlur}
-            />
-          </div>
-          <div className="calculator__box">
-            <h5 className="calculator__6 calculator__plate">2.5</h5>
-            <input
-              type="number"
-              className="calculator__number"
-              onBlur={handleNumberBlur}
-            />
-          </div>
+          {plateWeights.map((plateWeight: number, i: number) => (
+            <div className="calculator__box" key={i}>
+              <h5
+                className={`calculator__${i} calculator__plate`}
+                onClick={() => handleClick(i)}
+              >
+                {plateWeight}
+              </h5>
+              <input
+                type="number"
+                className="calculator__number"
+                onBlur={handleNumberBlur}
+              />
+            </div>
+          ))}
         </div>
       </div>
     </div>
