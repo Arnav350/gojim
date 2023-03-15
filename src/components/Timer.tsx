@@ -1,10 +1,24 @@
 import React from "react";
 import "../pages/Routine.css";
 
-function Timer() {
+interface IProps {
+  timer: number;
+  setTime: Function;
+  setCurrentTime: Function;
+}
+
+function Timer(props: IProps) {
+  function handleClick() {
+    props.setTime(props.timer);
+    props.setCurrentTime(props.timer);
+  }
+
   return (
-    <div className="timer">
-      <p className="timer__time">1:00</p>
+    <div className="timer" onClick={handleClick}>
+      <p className="timer__time">
+        {Math.floor(props.timer / 60)}:
+        {props.timer % 60 < 10 ? "0" + (props.timer % 60) : props.timer % 60}
+      </p>
     </div>
   );
 }

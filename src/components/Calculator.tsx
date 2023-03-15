@@ -54,7 +54,7 @@ function Calculator() {
   function handleClick(plateIndex: number) {
     setPlateValues(
       plateValues.map((plateValue, i) => {
-        return plateIndex == i ? !plateValue : plateValue;
+        return plateIndex === i ? !plateValue : plateValue;
       })
     );
   }
@@ -97,7 +97,8 @@ function Calculator() {
               onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
                 setBarValue(Number(event.target.value))
               }
-              onClick={handleTotalBlur}
+              onTouchEnd={handleTotalBlur}
+              onMouseUp={() => handleTotalBlur()}
             />
             <h5 className="calculator__weight calculator__number">
               {barValue * 5} {plateWeights[0] === 55 ? "lbs" : "kgs"}
@@ -105,14 +106,15 @@ function Calculator() {
           </div>
           {plateWeights.map((plateWeight: number, i: number) => (
             <div className="calculator__box" key={i}>
-              <h5
+              <button
                 className={`calculator__${i} calculator__plate`}
                 onMouseUp={() => handleClick(i)}
+                onTouchEnd={() => handleClick(i)}
                 onClick={handleTotalBlur}
                 style={plateValues[i] ? { opacity: "0.1" } : undefined}
               >
                 {plateWeight}
-              </h5>
+              </button>
               <input
                 type="number"
                 value={numberValues[i] || ""}

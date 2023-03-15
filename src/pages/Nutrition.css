@@ -15,6 +15,7 @@
 .nutrition__nav {
   color: #487;
   font-size: 32px;
+  cursor: pointer;
 }
 
 .nutrition__heading {

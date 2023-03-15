@@ -15,6 +15,7 @@
 .workout__nav {
   color: #487;
   font-size: 32px;
+  cursor: pointer;
 }
 
 .workout__heading {
@@ -88,6 +89,7 @@
   padding: 8px;
   background-color: #161616;
   border-radius: 16px;
+  cursor: pointer;
 }
 
 .log__date {

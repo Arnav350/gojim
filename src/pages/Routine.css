@@ -20,6 +20,7 @@
   margin: 4px;
   color: #487;
   font-size: 28px;
+  cursor: pointer;
 }
 
 .routine__heading {
@@ -106,8 +107,10 @@
 }
 
 .calculator__icon {
+  margin-left: 16px;
   color: #487;
   font-size: 24px;
+  cursor: pointer;
 }
 
 .calculator__container {
@@ -155,6 +158,7 @@
   width: 48px;
   height: 8px;
   background-color: #999;
+  cursor: pointer;
 }
 
 .calculator__slider::-webkit-slider-thumb {
@@ -273,6 +277,7 @@
 .exercise__more {
   color: #eee;
   font-size: 20px;
+  cursor: pointer;
 }
 
 .exercise__subtitles {
@@ -375,16 +380,16 @@
   margin: 16px;
   width: 256px;
   height: 256px;
+  border-radius: 50%;
+  background: conic-gradient(#487 100%, #0000 0),
+    #444;
 }
 
-.clock__circle::before {
-  content: "";
+.clock__mask {
   position: absolute;
+  inset: 16px;
+  background-color: #000;
   border-radius: 50%;
-  inset: 0;
-  background: conic-gradient(#487 40%, #0000 0),
-    #444;
-  mask: radial-gradient(farthest-side, #0000 calc(99% - 12px), #000 calc(100% - 12px));
 }
 
 .clock__time {

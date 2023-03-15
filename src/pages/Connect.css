@@ -39,8 +39,7 @@
 
 .connect__stories {
   display: flex;
-  /* padding: 16px 0 48px 8px; */
-  padding: 16px 0 144px 8px;
+  padding: 16px 0 48px 8px;
   border-bottom: 1px solid #444;
   overflow-x: auto;
 }
@@ -56,6 +55,7 @@
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   border: 2px solid #487;
+  cursor: pointer;
 }
 
 .connect__new,

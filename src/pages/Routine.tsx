@@ -69,7 +69,7 @@ function Routine() {
         <Exercise />
         <button className="routine__add">Add Exercise</button>
       </div>
-      <Calculator />
+      {false && <Calculator />}
       {showClock && <Clock setShowClock={setShowClock} />}
     </main>
   );
