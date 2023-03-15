@@ -1,81 +1,76 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { BsXLg } from "react-icons/bs";
 
 function Calculator() {
-  const totalRef = useRef<HTMLInputElement>(null!);
+  const plateLbs: number[] = [55, 45, 35, 25, 10, 5, 2.5];
+  const plateKgs: number[] = [25, 20, 15, 10, 5, 2.5, 1.25];
 
+  const [totalValue, setTotalValue] = useState<number>(0);
   const [barValue, setBarValue] = useState<number>(9);
+  const [numberValues, setNumberValues] = useState<number[]>(Array(7).fill(0));
+  const [plateValues, setPlateValues] = useState<boolean[]>(
+    Array(7).fill(false)
+  );
+  const [plateWeights, setPlateWeights] = useState(plateLbs);
 
-  const plateWeights: number[] = [55, 45, 35, 25, 10, 5, 2.5];
+  function handleTotalBlur() {
+    let totalWeight = totalValue > barValue * 5 ? totalValue - barValue * 5 : 0;
 
-  function handleTotalBlur(
-    totalWeight: number = Number(totalRef.current.value)
-  ) {
-    totalWeight -= barValue * 5;
-
-    if (totalWeight < 0) {
-      return;
-    }
-
-    const numberElems = document.querySelectorAll<HTMLInputElement>(
-      ".calculator__number"
+    setNumberValues(
+      numberValues.map((__, i) => {
+        if (plateValues[i] === true) {
+          return 0;
+        } else {
+          const plateAmount = Math.floor(totalWeight / (plateWeights[i] * 2));
+          totalWeight %= plateWeights[i] * 2;
+          return plateAmount;
+        }
+      })
     );
-    const plateElems =
-      document.querySelectorAll<HTMLHeadingElement>(".calculator__plate");
-
-    for (let i = 0; i < plateWeights.length; i++) {
-      if (plateElems[i].style.opacity === "0.1") {
-        numberElems[i + 1].value = "";
-        continue;
-      }
-
-      const plateAmount = Math.floor(totalWeight / (plateWeights[i] * 2));
-
-      numberElems[i + 1].value = plateAmount ? plateAmount.toString() : "";
-      totalWeight %= plateWeights[i] * 2;
-    }
   }
 
   function handleNumberBlur() {
-    const numberElems = document.querySelectorAll<HTMLInputElement>(
-      ".calculator__number"
-    );
-
     let totalWeight: number = 0;
 
     for (let i: number = 0; i < plateWeights.length; i++) {
-      totalWeight += Number(numberElems[i + 1].value) * plateWeights[i] * 2;
+      totalWeight += numberValues[i] * plateWeights[i] * 2;
     }
 
-    totalWeight += barValue * 5;
-    if (totalRef) {
-      totalRef.current.value = totalWeight.toString();
+    setTotalValue(totalWeight + barValue * 5);
+  }
+
+  function handleUnitClick() {
+    if (plateWeights[0] === 55) {
+      setPlateWeights(plateKgs);
+      setBarValue(Math.round(barValue / 2.2));
+      setTotalValue(Math.round(totalValue / 2.2 / 2.5) * 2.5);
+    } else {
+      setPlateWeights(plateLbs);
+      setBarValue(Math.round(barValue * 2.2));
+      setTotalValue(Math.round((totalValue * 2.2) / 5) * 5);
     }
   }
 
   function handleClick(plateIndex: number) {
-    const plateElem = document.querySelector<HTMLHeadingElement>(
-      `.calculator__${plateIndex}`
+    setPlateValues(
+      plateValues.map((plateValue, i) => {
+        return plateIndex == i ? !plateValue : plateValue;
+      })
     );
-    if (plateElem) {
-      if (plateElem.style.opacity === "0.1") {
-        plateElem.style.opacity = "1";
-      } else {
-        plateElem.style.opacity = "0.1";
-      }
-    }
-    handleTotalBlur();
   }
 
-  function handleChange(barWeight: number) {
-    setBarValue(barWeight);
-    handleTotalBlur();
+  function handleChange(numberAmount: number, i: number) {
+    const numberArr = [...numberValues];
+    numberArr[i] = numberAmount;
+    setNumberValues(numberArr);
   }
 
   return (
     <div className="calculator">
       <header className="calculator__top">
-        <h4 className="calculator__unit">Lbs</h4>
+        <button className="calculator__unit" onClick={handleUnitClick}>
+          {plateWeights[0] === 55 ? "Lbs" : "Kgs"}
+        </button>
         <h3 className="calculator__heading">Plate Calculator</h3>
         <BsXLg className="calculator__icon" />
       </header>
@@ -83,8 +78,9 @@ function Calculator() {
         <input
           type="number"
           className="calculator__total"
-          ref={totalRef}
-          onBlur={(event) => handleTotalBlur(Number(event.target.value))}
+          value={totalValue || ""}
+          onChange={(event) => setTotalValue(Number(event.target.value))}
+          onBlur={handleTotalBlur}
         />
         <div className="calculator__subtitles">
           <h5 className="calculator__subtitle">Bar</h5>
@@ -96,25 +92,34 @@ function Calculator() {
               type="range"
               value={barValue}
               min="0"
-              max="13"
+              max={plateWeights[0] === 55 ? "13" : "6"}
               className="calculator__slider"
-              onChange={(event) => handleChange(Number(event.target.value))}
+              onInput={(event: React.ChangeEvent<HTMLInputElement>) =>
+                setBarValue(Number(event.target.value))
+              }
+              onClick={handleTotalBlur}
             />
             <h5 className="calculator__weight calculator__number">
-              {barValue * 5} lbs
+              {barValue * 5} {plateWeights[0] === 55 ? "lbs" : "kgs"}
             </h5>
           </div>
           {plateWeights.map((plateWeight: number, i: number) => (
             <div className="calculator__box" key={i}>
               <h5
                 className={`calculator__${i} calculator__plate`}
-                onClick={() => handleClick(i)}
+                onMouseUp={() => handleClick(i)}
+                onClick={handleTotalBlur}
+                style={plateValues[i] ? { opacity: "0.1" } : undefined}
               >
                 {plateWeight}
               </h5>
               <input
                 type="number"
+                value={numberValues[i] || ""}
                 className="calculator__number"
+                onChange={(event) =>
+                  handleChange(Number(event.target.value), i)
+                }
                 onBlur={handleNumberBlur}
               />
             </div>
