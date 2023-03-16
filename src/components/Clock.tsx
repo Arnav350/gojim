@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Timer from "./Timer";
-import { BsSliders, BsXLg, BsPencilSquare } from "react-icons/bs";
+import Timers from "./Timers";
+import { BsSliders, BsXLg, BsPencilSquare, BsPlusLg } from "react-icons/bs";
 import "../pages/Routine.css";
 
 interface IProps {
@@ -13,6 +14,8 @@ function Clock(props: IProps) {
   const [time, setTime] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(1);
   const [timers, setTimers] = useState<number[]>([10, 230]);
+
+  const [showTimers, setShowTimers] = useState<boolean>(false);
 
   useEffect(() => {
     let interval: any;
@@ -108,8 +111,8 @@ function Clock(props: IProps) {
 
       {!clockStart && (
         <div className="clock__timers">
-          <div className="clock__edit">
-            <BsPencilSquare className="clock__pencil" />
+          <div className="clock__timer" onClick={() => setShowTimers(true)}>
+            <BsPencilSquare className="clock__icon" />
           </div>
           {timers.map((timer, i) => (
             <Timer
@@ -120,6 +123,13 @@ function Clock(props: IProps) {
             />
           ))}
         </div>
+      )}
+      {showTimers && (
+        <Timers
+          timers={timers}
+          setTimers={setTimers}
+          setShowTimers={setShowTimers}
+        />
       )}
     </div>
   );
