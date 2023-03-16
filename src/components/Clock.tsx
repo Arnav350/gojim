@@ -13,9 +13,12 @@ function Clock(props: IProps) {
 
   const [time, setTime] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(1);
-  const [timers, setTimers] = useState<number[]>([10, 230]);
-
+  const [timers, setTimers] = useState<number[]>([60, 120]);
   const [showTimers, setShowTimers] = useState<boolean>(false);
+
+  const [timerMode, setTimerMode] = useState<boolean>(true);
+  const [stopwatch, setStopwatch] = useState<number>(0);
+  const [stopwatchStart, setStopwatchStart] = useState<boolean>(false);
 
   useEffect(() => {
     let interval: any;
@@ -32,11 +35,15 @@ function Clock(props: IProps) {
     }
 
     return () => clearInterval(interval);
-  });
+  }, [clockStart, time]);
 
   function handleStopClick() {
-    setClockStart(false);
-    setTime(currentTime);
+    if (timerMode) {
+      setClockStart(false);
+      setTime(currentTime);
+    } else {
+      setStopwatchStart(false);
+    }
   }
 
   return (
@@ -95,11 +102,12 @@ function Clock(props: IProps) {
         </div>
       ) : (
         <div className="clock__buttons">
-          {true ? (
-            <button className="clock__secondary">Stopwatch</button>
-          ) : (
-            <button className="clock__secondary">Timer</button>
-          )}
+          <button
+            className="clock__secondary"
+            onClick={() => setTimerMode(!timerMode)}
+          >
+            {timerMode ? "Stopwatch" : "Timer"}
+          </button>
           <button
             className="clock__primary"
             onClick={() => setClockStart(true)}
