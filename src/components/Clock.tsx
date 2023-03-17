@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Timer from "./Timer";
 import Timers from "./Timers";
-import { BsSliders, BsXLg, BsPencilSquare, BsPlusLg } from "react-icons/bs";
+import { BsSliders, BsXLg, BsPencilSquare } from "react-icons/bs";
 import "../pages/Routine.css";
 
 interface IProps {
@@ -9,40 +9,53 @@ interface IProps {
 }
 
 function Clock(props: IProps) {
-  const [clockStart, setClockStart] = useState<boolean>(false);
-
   const [time, setTime] = useState<number>(0);
   const [currentTime, setCurrentTime] = useState<number>(1);
-  const [timers, setTimers] = useState<number[]>([60, 120]);
-  const [showTimers, setShowTimers] = useState<boolean>(false);
-
-  const [timerMode, setTimerMode] = useState<boolean>(true);
+  const [timerStart, setTimerStart] = useState<boolean>(false);
   const [stopwatch, setStopwatch] = useState<number>(0);
   const [stopwatchStart, setStopwatchStart] = useState<boolean>(false);
+  const [timerMode, setTimerMode] = useState<boolean>(true);
+  const [timers, setTimers] = useState<number[]>([60, 120]);
+  const [showTimers, setShowTimers] = useState<boolean>(false);
 
   useEffect(() => {
     let interval: any;
 
-    if (clockStart && !(time === 0)) {
+    if (timerStart && !(time === 0)) {
       interval = setInterval(() => {
         setTime(time - 1);
       }, 1000);
     } else {
       clearInterval(interval);
-      if (clockStart) {
+      if (timerStart) {
         handleStopClick();
       }
     }
 
     return () => clearInterval(interval);
-  }, [clockStart, time]);
+  }, [timerStart, time]);
+
+  useEffect(() => {
+    let interval: any;
+
+    if (stopwatchStart) {
+      interval = setInterval(() => {
+        setStopwatch(stopwatch + 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+
+    return () => clearInterval(interval);
+  });
 
   function handleStopClick() {
     if (timerMode) {
-      setClockStart(false);
+      setTimerStart(false);
       setTime(currentTime);
     } else {
       setStopwatchStart(false);
+      setStopwatch(0);
     }
   }
 
@@ -65,11 +78,21 @@ function Clock(props: IProps) {
         }}
       >
         <div className="clock__mask"></div>
-        <h1 className="clock__time">
-          {time < 600 ? "0" + Math.floor(time / 60) : Math.floor(time / 60)}:
-          {time % 60 < 10 ? "0" + (time % 60) : time % 60}
-        </h1>
-        {clockStart && (
+        {timerMode ? (
+          <h1 className="clock__time">
+            {time < 600 ? "0" + Math.floor(time / 60) : Math.floor(time / 60)}:
+            {time % 60 < 10 ? "0" + (time % 60) : time % 60}
+          </h1>
+        ) : (
+          <h1 className="clock__time">
+            {stopwatch < 600
+              ? "0" + Math.floor(stopwatch / 60)
+              : Math.floor(stopwatch / 60)}
+            :{stopwatch % 60 < 10 ? "0" + (stopwatch % 60) : stopwatch % 60}
+          </h1>
+        )}
+
+        {timerStart && (
           <div className="clock__change">
             <button
               className="clock__operator"
@@ -88,14 +111,18 @@ function Clock(props: IProps) {
           </div>
         )}
       </div>
-      {clockStart ? (
+      {timerStart || stopwatchStart ? (
         <div className="clock__buttons">
           <button className="clock__secondary" onClick={handleStopClick}>
             Stop
           </button>
           <button
             className="clock__primary"
-            onClick={() => setClockStart(false)}
+            onClick={
+              timerMode
+                ? () => setTimerStart(false)
+                : () => setStopwatchStart(false)
+            }
           >
             Pause
           </button>
@@ -110,14 +137,18 @@ function Clock(props: IProps) {
           </button>
           <button
             className="clock__primary"
-            onClick={() => setClockStart(true)}
+            onClick={
+              timerMode
+                ? () => setTimerStart(true)
+                : () => setStopwatchStart(true)
+            }
           >
             Start
           </button>
         </div>
       )}
 
-      {!clockStart && (
+      {!timerStart && !stopwatchStart && (
         <div className="clock__timers">
           <div className="clock__timer" onClick={() => setShowTimers(true)}>
             <BsPencilSquare className="clock__icon" />
