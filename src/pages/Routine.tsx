@@ -5,6 +5,7 @@ import Exercise from "../components/Exercise";
 import { Link } from "react-router-dom";
 import { BsChevronDown, BsAlarm } from "react-icons/bs";
 import "./Routine.css";
+import Labels from "../components/Labels";
 
 function Routine() {
   const [showClock, setShowClock] = useState<boolean>(false);
@@ -18,7 +19,7 @@ function Routine() {
     "Smith Machine Elevated Front Squat",
     "Bicep Curl",
   ]);
-  const [setsAmount, setSetsAmount] = useState<number[]>([3]);
+  const [setsAmount, setSetsAmount] = useState<number[]>([3, 3, 3]);
 
   return (
     <main className="routine">
@@ -45,12 +46,13 @@ function Routine() {
       </header>
       <div className="routine__exercises">
         {exercises.map((__, i) => (
-          <Exercise name={exercises[i]} />
+          <Exercise key={i} name={exercises[i]} />
         ))}
         <button className="routine__add">Add Exercise</button>
       </div>
-      {false && <Calculator />}
       {showClock && <Clock setShowClock={setShowClock} />}
+      {false && <Calculator />}
+      {false && <Labels />}
     </main>
   );
 }

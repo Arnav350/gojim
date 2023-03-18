@@ -39,12 +39,9 @@ function Exercise(props: IProps) {
   ]);
 
   function handleClick() {
-    const tempPrevSets = [...prevSets];
-    tempPrevSets.push({ weight: 0, reps: 0 });
-    setPrevSets([...tempPrevSets]);
-
     const tempSets = [...sets];
     tempSets.push({ weight: 0, reps: 0 });
+    setPrevSets([...tempSets]);
     setSets([...tempSets]);
   }
 

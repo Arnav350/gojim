@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BsArrowLeft, BsPlus, BsDash } from "react-icons/bs";
+import { BsChevronDown, BsPlus, BsDash } from "react-icons/bs";
 import "../pages/Routine.css";
 
 interface IProps {
@@ -29,7 +29,7 @@ function Timers(props: IProps) {
   return (
     <div className="timers">
       <header className="timers__top">
-        <BsArrowLeft
+        <BsChevronDown
           className="timers__nav"
           onClick={() => props.setShowTimers(false)}
         />

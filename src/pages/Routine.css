@@ -16,7 +16,7 @@
   display: flex;
   justify-content: center;
   gap: 8px;
-  width: 72px;
+  width: 64px;
 }
 
 .routine__nav {
@@ -36,12 +36,12 @@
   background-color: transparent;
   border-radius: 8px;
   text-align: center;
-  font-size: 18px;
+  font-size: 20px;
 }
 
 .routine__finish {
   background-color: #487;
-  padding: 4px 12px;
+  padding: 4px 10px;
   border-radius: 8px;
   color: #eee;
   font-size: 16px;
@@ -96,9 +96,9 @@
 }
 
 .calculator__icon {
-  margin-left: 16px;
+  margin-left: 12px;
   color: #487;
-  font-size: 24px;
+  font-size: 28px;
   cursor: pointer;
 }
 
@@ -284,6 +284,13 @@
   padding: 4px 8px;
 }
 
+.exercise__add {
+  margin-top: 4px;
+  padding: 4px 8px;
+  background-color: transparent;
+  border-top: 1px solid #999;
+}
+
 .set {
   display: flex;
   justify-content: space-between;
@@ -327,11 +334,65 @@
   width: 100%;
 }
 
-.exercise__add {
-  margin-top: 4px;
-  padding: 4px 8px;
-  background-color: transparent;
-  border-top: 1px solid #999;
+.labels {
+  position: fixed;
+  top: 60%;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  width: 100%;
+  background-color: #161616;
+}
+
+.labels__top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+}
+
+.labels__nav {
+  color: #487;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+.labels__heading {
+  font-size: 20px;
+}
+
+.labels__box {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  gap: 16px;
+}
+
+.labels__letter {
+  width: 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.labels__warmup {
+  color: #ffa500;
+}
+
+.labels__normal {
+  color: #fff;
+}
+
+.labels__drop {
+  color: #3db1ff;
+}
+
+.labels__delete {
+  color: #ff4f4f;
+}
+
+.labels__subtitle {
+  font-size: 18px;
 }
 
 .clock {

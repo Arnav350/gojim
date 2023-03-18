@@ -37,13 +37,17 @@ function Set(props: IProps) {
     props.setSets([...tempSets]);
   }
 
+  function handleSetClick() {}
+
   console.log(props.sets);
 
   return (
     <div className="set">
       <div className="set__box">
-        <h5 className="set__set">
-          {props.prevSet.label ? props.prevSet.label : props.id + 1}
+        <h5 className="set__set" onClick={handleSetClick}>
+          {props.sets[props.id].label
+            ? props.sets[props.id].label
+            : props.id + 1}
         </h5>
         <input
           type="number"
