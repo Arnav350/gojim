@@ -3,25 +3,55 @@ import Set from "./Set";
 import { BsThreeDots } from "react-icons/bs";
 import "../pages/Routine.css";
 
-function Exercise() {
-  const [prevSets, setPrevSets] = useState([
-    { prevWeight: 200, prevReps: 10 },
-    { prevWeight: 300, prevReps: 8 },
-    { prevWeight: 400, prevReps: 6 },
+interface IProps {
+  name: string;
+}
+
+interface IPrevSet {
+  label?: "W" | "D";
+  weight: number;
+  reps: number;
+  note?: string;
+}
+
+type IPrevSets = IPrevSet[];
+
+interface ISet {
+  label?: "W" | "D";
+  weight: number;
+  reps: number;
+  notes?: string;
+}
+
+type ISets = ISet[];
+
+function Exercise(props: IProps) {
+  const [prevSets, setPrevSets] = useState<IPrevSets>([
+    { label: "W", weight: 200, reps: 10, note: "note" },
+    { weight: 300, reps: 8 },
+    { label: "D", weight: 400, reps: 6 },
   ]);
 
-  const [sets, setSets] = useState([{ weight: 200, reps: 10 }]);
+  const [sets, setSets] = useState<ISets>([
+    { label: "W", weight: 200, reps: 10 },
+    { weight: 300, reps: 8 },
+    { label: "D", weight: 400, reps: 6 },
+  ]);
 
   function handleClick() {
-    let setsArr = [...prevSets];
-    setsArr.push({ prevWeight: 0, prevReps: 0 });
-    setPrevSets(setsArr);
+    const tempPrevSets = [...prevSets];
+    tempPrevSets.push({ weight: 0, reps: 0 });
+    setPrevSets([...tempPrevSets]);
+
+    const tempSets = [...sets];
+    tempSets.push({ weight: 0, reps: 0 });
+    setSets([...tempSets]);
   }
 
   return (
     <div className="exercise">
       <div className="exercise__top">
-        <h3 className="exercise__name">Bicep Curl</h3>
+        <h3 className="exercise__name">{props.name}</h3>
         <BsThreeDots className="exercise__more" />
       </div>
       <div className="exercise__subtitles">
@@ -31,12 +61,11 @@ function Exercise() {
         <h4 className="exercise__subtitle">Notes</h4>
       </div>
       <div className="exercise__sets">
-        {prevSets.map((prevSet, i) => (
+        {sets.map((__, i) => (
           <Set
             key={i}
-            id={i + 1}
-            prevWeight={prevSet.prevWeight}
-            prevReps={prevSet.prevReps}
+            id={i}
+            prevSet={prevSets[i]}
             sets={sets}
             setSets={setSets}
           />

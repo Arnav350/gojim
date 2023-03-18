@@ -62,7 +62,7 @@ function Calculator() {
   function handleChange(numberAmount: number, i: number) {
     const numberArr = [...numberValues];
     numberArr[i] = numberAmount;
-    setNumberValues(numberArr);
+    setNumberValues([...numberArr]);
   }
 
   return (

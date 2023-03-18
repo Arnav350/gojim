@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import Calculator from "../components/Calculator";
 import Clock from "../components/Clock";
 import Exercise from "../components/Exercise";
@@ -7,8 +7,18 @@ import { BsChevronDown, BsAlarm } from "react-icons/bs";
 import "./Routine.css";
 
 function Routine() {
-  const [workoutName, setWorkoutName] = useState<string>("Workout Name");
   const [showClock, setShowClock] = useState<boolean>(false);
+
+  const [date, setDate] = useState();
+  const [workoutName, setWorkoutName] = useState<string>("Workout Name");
+  const [time, setTime] = useState();
+  const [totalWeight, setTotalWeight] = useState<number>();
+  const [exercises, setExercises] = useState<string[]>([
+    "Bench Press",
+    "Smith Machine Elevated Front Squat",
+    "Bicep Curl",
+  ]);
+  const [setsAmount, setSetsAmount] = useState<number[]>([3]);
 
   return (
     <main className="routine">
@@ -34,11 +44,9 @@ function Routine() {
         </div>
       </header>
       <div className="routine__exercises">
-        <Exercise />
-        <Exercise />
-        <Exercise />
-        <Exercise />
-        <Exercise />
+        {exercises.map((__, i) => (
+          <Exercise name={exercises[i]} />
+        ))}
         <button className="routine__add">Add Exercise</button>
       </div>
       {false && <Calculator />}
