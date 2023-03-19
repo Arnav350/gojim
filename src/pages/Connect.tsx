@@ -1,6 +1,6 @@
 import React from "react";
-import Icon from "../components/Icon";
-import User from "../components/User";
+import StoryIcon from "../components/StoryIcon";
+import ConnectUser from "../components/ConnectUser";
 import { BsSearch, BsPlusLg } from "react-icons/bs";
 import "./Connect.css";
 
@@ -25,18 +25,16 @@ function Connect() {
             </div>
             <p className="connect__add">Add story</p>
           </div>
-          <Icon />
-          <Icon />
-          <Icon />
+          <StoryIcon />
+          <StoryIcon />
+          <StoryIcon />
         </div>
         <div className="connect__contacts">
-          <User />
-          <User />
-          <User />
-          <User />
-          <User />
-          <User />
-          <User />
+          <ConnectUser />
+          <ConnectUser />
+          <ConnectUser />
+          <ConnectUser />
+          <ConnectUser />
         </div>
       </div>
     </main>

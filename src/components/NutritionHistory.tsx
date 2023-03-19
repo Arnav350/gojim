@@ -1,7 +1,7 @@
 import React from "react";
 import { BsPlus, BsCheckLg } from "react-icons/bs";
 
-function History() {
+function NutritionHistory() {
   return (
     <div className="history">
       <div className="history__text">
@@ -17,4 +17,4 @@ function History() {
   );
 }
 
-export default History;
+export default NutritionHistory;

@@ -1,8 +1,8 @@
 import React from "react";
 import { FaClock, FaWeightHanging } from "react-icons/fa";
-import "../pages/Workout";
+import "../pages/Gym";
 
-function Log() {
+function WorkoutLog() {
   return (
     <div className="log">
       <div className="log__date">
@@ -33,4 +33,4 @@ function Log() {
   );
 }
 
-export default Log;
+export default WorkoutLog;

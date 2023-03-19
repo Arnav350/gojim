@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsXLg } from "react-icons/bs";
 
-function Calculator() {
+function PlateCalculator() {
   const plateLbs: number[] = [55, 45, 35, 25, 10, 5, 2.5];
   const plateKgs: number[] = [25, 20, 15, 10, 5, 2.5, 1.25];
 
@@ -132,4 +132,4 @@ function Calculator() {
   );
 }
 
-export default Calculator;
+export default PlateCalculator;

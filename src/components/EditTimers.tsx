@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsChevronDown, BsPlus, BsDash } from "react-icons/bs";
-import "../pages/Routine.css";
+import "../pages/Gym.css";
 
 interface IProps {
   timers: number[];
@@ -8,7 +8,7 @@ interface IProps {
   setShowTimers: Function;
 }
 
-function Timers(props: IProps) {
+function EditTimers(props: IProps) {
   const [minutes, setMinutes] = useState<number>(0);
   const [seconds, setSeconds] = useState<number>(0);
 
@@ -72,4 +72,4 @@ function Timers(props: IProps) {
   );
 }
 
-export default Timers;
+export default EditTimers;

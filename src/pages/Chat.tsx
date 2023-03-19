@@ -1,5 +1,5 @@
 import React from "react";
-import Message from "../components/Message";
+import ChatMessage from "../components/ChatMessage";
 import {
   BsChevronLeft,
   BsTelephone,
@@ -31,11 +31,11 @@ function Chat() {
         </div>
       </header>
       <div className="chat__messages">
-        <Message />
-        <Message />
-        <Message />
-        <Message />
-        <Message />
+        <ChatMessage />
+        <ChatMessage />
+        <ChatMessage />
+        <ChatMessage />
+        <ChatMessage />
       </div>
       <div className="chat__input">
         <BsCamera className="chat__icon" />

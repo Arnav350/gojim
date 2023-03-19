@@ -1,6 +1,6 @@
 import React from "react";
 
-function Message() {
+function ChatMessage() {
   return (
     <div className="my message">
       {true && (
@@ -26,4 +26,4 @@ function Message() {
   );
 }
 
-export default Message;
+export default ChatMessage;

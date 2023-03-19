@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../pages/Connect.css";
 
-function User() {
+function ConnectUser() {
   return (
     <Link to="/chat" className="user">
       <img src="https://picsum.photos/200" alt="" className="user__picture" />
@@ -22,4 +22,4 @@ function User() {
   );
 }
 
-export default User;
+export default ConnectUser;

@@ -1,7 +1,7 @@
 import React from "react";
 import "../pages/Connect.css";
 
-function Icon() {
+function StoryIcon() {
   return (
     <div className="icon">
       <img
@@ -14,4 +14,4 @@ function Icon() {
   );
 }
 
-export default Icon;
+export default StoryIcon;

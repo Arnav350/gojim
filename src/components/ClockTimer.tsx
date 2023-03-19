@@ -1,5 +1,5 @@
 import React from "react";
-import "../pages/Routine.css";
+import "../pages/Gym.css";
 
 interface IProps {
   timer: number;
@@ -7,7 +7,7 @@ interface IProps {
   setCurrentTime: Function;
 }
 
-function Timer(props: IProps) {
+function ClockTimer(props: IProps) {
   function handleClick() {
     props.setTime(props.timer);
     props.setCurrentTime(props.timer);
@@ -23,4 +23,4 @@ function Timer(props: IProps) {
   );
 }
 
-export default Timer;
+export default ClockTimer;

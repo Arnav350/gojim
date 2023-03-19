@@ -1,8 +1,8 @@
 import React from "react";
 import { BsChevronDown, BsTrash3 } from "react-icons/bs";
-import "../pages/Routine.css";
+import "../pages/Gym.css";
 
-function Labels() {
+function SetLabels() {
   return (
     <div className="labels">
       <div className="labels__top">
@@ -29,4 +29,4 @@ function Labels() {
   );
 }
 
-export default Labels;
+export default SetLabels;

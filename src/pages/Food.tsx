@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import History from "../components/History";
+import NutritionHistory from "../components/NutritionHistory";
 import { Link } from "react-router-dom";
 import {
   BsArrowLeft,
@@ -83,9 +83,9 @@ function Food() {
         </div>
         <div className="food__box">
           <h3 className="food__subheading">History</h3>
-          <History />
-          <History />
-          <History />
+          <NutritionHistory />
+          <NutritionHistory />
+          <NutritionHistory />
         </div>
       </div>
     </main>

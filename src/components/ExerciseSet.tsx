@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../pages/Routine.css";
+import "../pages/Gym.css";
 
 interface IProps {
   id: number;
@@ -13,7 +13,7 @@ interface IProps {
   setSets: Function;
 }
 
-function Set(props: IProps) {
+function ExerciseSet(props: IProps) {
   const [weight, setWeight] = useState<string>("");
   const [reps, setReps] = useState<string>("");
   const [note, setNote] = useState<string>("");
@@ -37,14 +37,10 @@ function Set(props: IProps) {
     props.setSets([...tempSets]);
   }
 
-  function handleSetClick() {}
-
-  console.log(props.sets);
-
   return (
     <div className="set">
       <div className="set__box">
-        <h5 className="set__set" onClick={handleSetClick}>
+        <h5 className="set__set">
           {props.sets[props.id].label
             ? props.sets[props.id].label
             : props.id + 1}
@@ -78,4 +74,4 @@ function Set(props: IProps) {
   );
 }
 
-export default Set;
+export default ExerciseSet;

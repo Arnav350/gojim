@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import Timer from "./Timer";
-import Timers from "./Timers";
+import ClockTimer from "./ClockTimer";
+import EditTimers from "./EditTimers";
 import { BsSliders, BsXLg, BsPencilSquare } from "react-icons/bs";
-import "../pages/Routine.css";
+import "../pages/Gym.css";
 
 interface IProps {
   setShowClock: Function;
@@ -154,7 +154,7 @@ function Clock(props: IProps) {
             <BsPencilSquare className="clock__icon" />
           </div>
           {timers.map((timer, i) => (
-            <Timer
+            <ClockTimer
               key={i}
               timer={timer}
               setTime={setTime}
@@ -164,7 +164,7 @@ function Clock(props: IProps) {
         </div>
       )}
       {showTimers && (
-        <Timers
+        <EditTimers
           timers={timers}
           setTimers={setTimers}
           setShowTimers={setShowTimers}
