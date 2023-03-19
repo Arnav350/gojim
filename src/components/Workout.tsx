@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import PlateCalculator from "../components/PlateCalculator";
-import SetLabels from "../components/SetLabels";
-import Clock from "../components/Clock";
-import RoutineExercise from "../components/RoutineExercise";
+import PlateCalculator from "./PlateCalculator";
+import SetLabels from "./SetLabels";
+import Clock from "./Clock";
+import RoutineExercise from "./RoutineExercise";
 import { Link } from "react-router-dom";
 import { BsChevronDown, BsAlarm } from "react-icons/bs";
-import "./Gym.css";
+import "../pages/Gym.css";
 
 function Workout() {
   const [showClock, setShowClock] = useState<boolean>(false);
+  const [show, setShow] = useState<boolean>(false);
 
   const [date, setDate] = useState();
   const [workoutName, setWorkoutName] = useState<string>("Workout Name");
@@ -21,11 +22,13 @@ function Workout() {
   ]);
   const [setsAmount, setSetsAmount] = useState<number[]>([3, 3, 3]);
 
+  function handleClick() {}
+
   return (
     <main className="workout">
       <header className="workout__top">
         <div className="workout__navs">
-          <BsChevronDown className="workout__down workout__nav" />
+          <BsChevronDown className="workout__nav" onClick={handleClick} />
           <BsAlarm
             className="workout__nav"
             onClick={() => setShowClock(true)}

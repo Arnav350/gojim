@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Gym from "./pages/Gym";
-import Workout from "./pages/Workout";
+import Workout from "./components/Workout";
 import Nutrition from "./pages/Nutrition";
 import Food from "./pages/Food";
 import Connect from "./pages/Connect";
@@ -16,6 +16,7 @@ import "./App.css";
 function App() {
   return (
     <Router>
+      {window.location.pathname !== "/" && <Workout />}
       <Routes>
         {/* Unprotected Routes */}
         <Route path="/" element={<Home />} />
@@ -25,7 +26,6 @@ function App() {
         {/* Protected Routes */}
 
         <Route path="/gym" element={<Gym />} />
-        <Route path="/workout" element={<Workout />} />
         {/* Workout Log Page
         Includes workout logs, create a new workout, and progress graph */}
 

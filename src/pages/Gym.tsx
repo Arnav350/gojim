@@ -15,16 +15,14 @@ function Gym() {
       <header className="gym__top">
         <BsGraphUp className="gym__nav" />
         <h2 className="gym__heading">Workout</h2>
-        <Link to="/workout">
-          <BsPlusLg className="gym__nav" />
-        </Link>
+        <BsPlusLg className="gym__nav" />
       </header>
       <div className="gym__scroll">
         <div className="gym__box">
-          <Link to="/workout" className="gym__empty">
+          <div className="gym__empty">
             <BsPlusLg className="gym__plus" />
             <h4 className="gym__subtitle">Start Empty Workout</h4>
-          </Link>
+          </div>
           <div className="gym__routines">
             <button className="gym__routine">
               <BsClipboard2Plus className="gym__icon" />
