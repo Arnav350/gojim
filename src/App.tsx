@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
@@ -14,9 +14,11 @@ import Nav from "./pages/Nav";
 import "./App.css";
 
 function App() {
+  const [workout, setWorkout] = useState({ start: false, show: false });
+
   return (
     <Router>
-      {window.location.pathname !== "/" && <Workout />}
+      {workout.start && <Workout workout={workout} setWorkout={setWorkout} />}
       <Routes>
         {/* Unprotected Routes */}
         <Route path="/" element={<Home />} />
@@ -25,7 +27,7 @@ function App() {
 
         {/* Protected Routes */}
 
-        <Route path="/gym" element={<Gym />} />
+        <Route path="/gym" element={<Gym setWorkout={setWorkout} />} />
         {/* Workout Log Page
         Includes workout logs, create a new workout, and progress graph */}
 

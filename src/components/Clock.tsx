@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import ClockTimer from "./ClockTimer";
 import EditTimers from "./EditTimers";
 import { BsSliders, BsXLg, BsPencilSquare } from "react-icons/bs";
 import "../pages/Gym.css";
@@ -47,7 +46,7 @@ function Clock(props: IProps) {
     }
 
     return () => clearInterval(interval);
-  });
+  }, [stopwatchStart, stopwatch]);
 
   function handleStopClick() {
     if (timerMode) {
@@ -57,6 +56,11 @@ function Clock(props: IProps) {
       setStopwatchStart(false);
       setStopwatch(0);
     }
+  }
+
+  function handleTimerClick(i: number) {
+    setTime(timers[i]);
+    setCurrentTime(timers[i]);
   }
 
   return (
@@ -154,12 +158,16 @@ function Clock(props: IProps) {
             <BsPencilSquare className="clock__icon" />
           </div>
           {timers.map((timer, i) => (
-            <ClockTimer
+            <div
+              className="clock__timer"
               key={i}
-              timer={timer}
-              setTime={setTime}
-              setCurrentTime={setCurrentTime}
-            />
+              onClick={() => handleTimerClick(i)}
+            >
+              <p className="clock__value">
+                {Math.floor(timer / 60)}:
+                {timer % 60 < 10 ? "0" + (timer % 60) : timer % 60}
+              </p>
+            </div>
           ))}
         </div>
       )}

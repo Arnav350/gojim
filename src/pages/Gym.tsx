@@ -1,6 +1,5 @@
 import React from "react";
 import WorkoutLog from "../components/WorkoutLog";
-import { Link } from "react-router-dom";
 import {
   BsGraphUp,
   BsPlusLg,
@@ -9,7 +8,11 @@ import {
 } from "react-icons/bs";
 import "./Gym.css";
 
-function Gym() {
+interface IProps {
+  setWorkout: Function;
+}
+
+function Gym(props: IProps) {
   return (
     <main className="gym">
       <header className="gym__top">
@@ -21,7 +24,12 @@ function Gym() {
         <div className="gym__box">
           <div className="gym__empty">
             <BsPlusLg className="gym__plus" />
-            <h4 className="gym__subtitle">Start Empty Workout</h4>
+            <h4
+              className="gym__subtitle"
+              onClick={() => props.setWorkout({ start: true, show: true })}
+            >
+              Start Empty Workout
+            </h4>
           </div>
           <div className="gym__routines">
             <button className="gym__routine">
