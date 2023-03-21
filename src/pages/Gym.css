@@ -210,9 +210,9 @@
 .workout__bar {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   gap: 4px;
+  padding: 12px;
   height: 100%;
   width: 100%;
   background-color: #111;
@@ -678,6 +678,11 @@
 }
 
 .clock__workout {
+  margin-top: -32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
   font-size: 14px;
 }
 

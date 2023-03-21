@@ -31,6 +31,23 @@ function Workout(props: IProps) {
   ]);
   const [setsAmount, setSetsAmount] = useState<number[]>([3, 3, 3]);
 
+  const [styleShowClock, setStyleShowClock] = useState({ display: "none" });
+
+  function handleClockClick() {
+    setShowClock(true);
+    setStyleShowClock({ display: "block" });
+  }
+
+  function handleDownClick() {
+    props.setWorkout({ ...props.workout, show: false });
+    setStyleShowClock({ display: "block" });
+  }
+
+  function handleUpClick() {
+    props.setWorkout({ ...props.workout, show: true });
+    setStyleShowClock({ display: "none" });
+  }
+
   return (
     <main
       className="workout"
@@ -44,14 +61,9 @@ function Workout(props: IProps) {
             <div className="workout__navs">
               <BsChevronDown
                 className="workout__nav"
-                onClick={() =>
-                  props.setWorkout({ ...props.workout, show: false })
-                }
+                onClick={handleDownClick}
               />
-              <BsAlarm
-                className="workout__nav"
-                onClick={() => setShowClock(true)}
-              />
+              <BsAlarm className="workout__nav" onClick={handleClockClick} />
             </div>
             <input
               type="text"
@@ -72,21 +84,21 @@ function Workout(props: IProps) {
             ))}
             <button className="workout__add">Add Exercise</button>
           </div>
-          {showClock && (
-            <Clock workout={props.workout} setShowClock={setShowClock} />
-          )}
           {false && <PlateCalculator />}
           {false && <SetLabels />}
         </div>
       ) : (
-        <div
-          className="workout__bar"
-          onClick={() => props.setWorkout({ ...props.workout, show: true })}
-        >
+        <div className="workout__bar" onClick={handleUpClick}>
           <h3 className="workout__name">{workoutName}</h3>
-          <Clock workout={props.workout} setShowClock={setShowClock} />
         </div>
       )}
+      <Clock
+        workout={props.workout}
+        styleShowClock={styleShowClock}
+        setStyleShowClock={setStyleShowClock}
+        showClock={showClock}
+        setShowClock={setShowClock}
+      />
     </main>
   );
 }

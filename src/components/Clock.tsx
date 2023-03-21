@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { CSSProperties, useEffect, useState } from "react";
 import EditTimers from "./EditTimers";
-import { BsSliders, BsXLg, BsPencilSquare } from "react-icons/bs";
+import { BsSliders, BsXLg, BsPencilSquare, BsChevronUp } from "react-icons/bs";
 import "../pages/Gym.css";
 
 interface IWorkout {
@@ -10,6 +10,9 @@ interface IWorkout {
 
 interface IProps {
   workout: IWorkout;
+  styleShowClock: CSSProperties;
+  setStyleShowClock: Function;
+  showClock: boolean;
   setShowClock: Function;
 }
 
@@ -69,13 +72,18 @@ function Clock(props: IProps) {
     setCurrentTime(timers[i]);
   }
 
+  function handleXClick() {
+    props.setShowClock(false);
+    props.setStyleShowClock({ display: "none" });
+  }
+
   return (
     <div
       className="clock"
       style={
         props.workout.show
-          ? undefined
-          : { position: "static", textAlign: "center" }
+          ? { ...props.styleShowClock }
+          : { ...props.styleShowClock, position: "static", textAlign: "center" }
       }
     >
       {props.workout.show ? (
@@ -83,10 +91,7 @@ function Clock(props: IProps) {
           <div className="clock__top">
             <BsSliders className="clock__nav" />
             <h2 className="clock__heading">Clock</h2>
-            <BsXLg
-              className="clock__nav"
-              onClick={() => props.setShowClock(false)}
-            />
+            <BsXLg className="clock__nav" onClick={handleXClick} />
           </div>
           <div
             className="clock__circle"
@@ -200,7 +205,20 @@ function Clock(props: IProps) {
         </div>
       ) : (
         <p className="clock__workout">
-          {timerStart ? time : stopwatchStart ? stopwatch : "Resume Workout"}
+          <BsChevronUp />
+          {timerStart
+            ? (time < 600
+                ? "0" + Math.floor(time / 60)
+                : Math.floor(time / 60)) +
+              ":" +
+              (time % 60 < 10 ? "0" + (time % 60) : time % 60)
+            : stopwatchStart
+            ? (stopwatch < 600
+                ? "0" + Math.floor(stopwatch / 60)
+                : Math.floor(stopwatch / 60)) +
+              ":" +
+              (stopwatch % 60 < 10 ? "0" + (stopwatch % 60) : stopwatch % 60)
+            : "Resume Workout"}
         </p>
       )}
     </div>
