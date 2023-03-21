@@ -224,13 +224,6 @@
   font-size: 20px;
 }
 
-.workout__resume {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 14px;
-}
-
 .workout__up {
   font-size: 16px;
 }
@@ -569,6 +562,10 @@
 .clock {
   position: fixed;
   top: 32px;
+  width: 100%;
+}
+
+.clock__show {
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -678,6 +675,10 @@
   background-color: transparent;
   color: #487;
   font-size: 20px;
+}
+
+.clock__workout {
+  font-size: 14px;
 }
 
 .timers {

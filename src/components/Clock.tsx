@@ -3,7 +3,13 @@ import EditTimers from "./EditTimers";
 import { BsSliders, BsXLg, BsPencilSquare } from "react-icons/bs";
 import "../pages/Gym.css";
 
+interface IWorkout {
+  start: boolean;
+  show: boolean;
+}
+
 interface IProps {
+  workout: IWorkout;
   setShowClock: Function;
 }
 
@@ -64,119 +70,138 @@ function Clock(props: IProps) {
   }
 
   return (
-    <div className="clock">
-      <div className="clock__top">
-        <BsSliders className="clock__nav" />
-        <h2 className="clock__heading">Clock</h2>
-        <BsXLg
-          className="clock__nav"
-          onClick={() => props.setShowClock(false)}
-        />
-      </div>
-      <div
-        className="clock__circle"
-        style={{
-          background: `conic-gradient(#487 ${
-            (time / currentTime) * 100
-          }%, #0000 0), #444`,
-        }}
-      >
-        <div className="clock__mask"></div>
-        {timerMode ? (
-          <h1 className="clock__time">
-            {time < 600 ? "0" + Math.floor(time / 60) : Math.floor(time / 60)}:
-            {time % 60 < 10 ? "0" + (time % 60) : time % 60}
-          </h1>
-        ) : (
-          <h1 className="clock__time">
-            {stopwatch < 600
-              ? "0" + Math.floor(stopwatch / 60)
-              : Math.floor(stopwatch / 60)}
-            :{stopwatch % 60 < 10 ? "0" + (stopwatch % 60) : stopwatch % 60}
-          </h1>
-        )}
-
-        {timerStart && (
-          <div className="clock__change">
-            <button
-              className="clock__operator"
-              onClick={
-                time < 15 ? () => handleStopClick() : () => setTime(time - 15)
-              }
-            >
-              -15s
-            </button>
-            <button
-              className="clock__operator"
-              onClick={() => setTime(time + 15)}
-            >
-              +15s
-            </button>
+    <div
+      className="clock"
+      style={
+        props.workout.show
+          ? undefined
+          : { position: "static", textAlign: "center" }
+      }
+    >
+      {props.workout.show ? (
+        <div className="clock__show">
+          <div className="clock__top">
+            <BsSliders className="clock__nav" />
+            <h2 className="clock__heading">Clock</h2>
+            <BsXLg
+              className="clock__nav"
+              onClick={() => props.setShowClock(false)}
+            />
           </div>
-        )}
-      </div>
-      {timerStart || stopwatchStart ? (
-        <div className="clock__buttons">
-          <button className="clock__secondary" onClick={handleStopClick}>
-            Stop
-          </button>
-          <button
-            className="clock__primary"
-            onClick={
-              timerMode
-                ? () => setTimerStart(false)
-                : () => setStopwatchStart(false)
-            }
+          <div
+            className="clock__circle"
+            style={{
+              background: `conic-gradient(#487 ${
+                (time / currentTime) * 100
+              }%, #0000 0), #444`,
+            }}
           >
-            Pause
-          </button>
+            <div className="clock__mask"></div>
+            {timerMode ? (
+              <h1 className="clock__time">
+                {time < 600
+                  ? "0" + Math.floor(time / 60)
+                  : Math.floor(time / 60)}
+                :{time % 60 < 10 ? "0" + (time % 60) : time % 60}
+              </h1>
+            ) : (
+              <h1 className="clock__time">
+                {stopwatch < 600
+                  ? "0" + Math.floor(stopwatch / 60)
+                  : Math.floor(stopwatch / 60)}
+                :{stopwatch % 60 < 10 ? "0" + (stopwatch % 60) : stopwatch % 60}
+              </h1>
+            )}
+
+            {timerStart && (
+              <div className="clock__change">
+                <button
+                  className="clock__operator"
+                  onClick={
+                    time < 15
+                      ? () => handleStopClick()
+                      : () => setTime(time - 15)
+                  }
+                >
+                  -15s
+                </button>
+                <button
+                  className="clock__operator"
+                  onClick={() => setTime(time + 15)}
+                >
+                  +15s
+                </button>
+              </div>
+            )}
+          </div>
+          {timerStart || stopwatchStart ? (
+            <div className="clock__buttons">
+              <button className="clock__secondary" onClick={handleStopClick}>
+                Stop
+              </button>
+              <button
+                className="clock__primary"
+                onClick={
+                  timerMode
+                    ? () => setTimerStart(false)
+                    : () => setStopwatchStart(false)
+                }
+              >
+                Pause
+              </button>
+            </div>
+          ) : (
+            <div className="clock__buttons">
+              <button
+                className="clock__secondary"
+                onClick={() => setTimerMode(!timerMode)}
+              >
+                {timerMode ? "Stopwatch" : "Timer"}
+              </button>
+              <button
+                className="clock__primary"
+                onClick={
+                  timerMode
+                    ? () => setTimerStart(true)
+                    : () => setStopwatchStart(true)
+                }
+              >
+                Start
+              </button>
+            </div>
+          )}
+
+          {!timerStart && !stopwatchStart && (
+            <div className="clock__timers">
+              <div className="clock__timer" onClick={() => setShowTimers(true)}>
+                <BsPencilSquare className="clock__icon" />
+              </div>
+              {timers.map((timer, i) => (
+                <div
+                  className="clock__timer"
+                  key={i}
+                  onClick={() => handleTimerClick(i)}
+                >
+                  <p className="clock__value">
+                    {Math.floor(timer / 60)}:
+                    {timer % 60 < 10 ? "0" + (timer % 60) : timer % 60}
+                  </p>
+                </div>
+              ))}
+            </div>
+          )}
+          {showTimers && (
+            <EditTimers
+              timers={timers}
+              setTimers={setTimers}
+              setShowTimers={setShowTimers}
+            />
+          )}
         </div>
       ) : (
-        <div className="clock__buttons">
-          <button
-            className="clock__secondary"
-            onClick={() => setTimerMode(!timerMode)}
-          >
-            {timerMode ? "Stopwatch" : "Timer"}
-          </button>
-          <button
-            className="clock__primary"
-            onClick={
-              timerMode
-                ? () => setTimerStart(true)
-                : () => setStopwatchStart(true)
-            }
-          >
-            Start
-          </button>
-        </div>
-      )}
-
-      {!timerStart && !stopwatchStart && (
-        <div className="clock__timers">
-          <div className="clock__timer" onClick={() => setShowTimers(true)}>
-            <BsPencilSquare className="clock__icon" />
-          </div>
-          {timers.map((timer, i) => (
-            <div
-              className="clock__timer"
-              key={i}
-              onClick={() => handleTimerClick(i)}
-            >
-              <p className="clock__value">
-                {Math.floor(timer / 60)}:
-                {timer % 60 < 10 ? "0" + (timer % 60) : timer % 60}
-              </p>
-            </div>
-          ))}
-        </div>
-      )}
-      {showTimers && (
-        <EditTimers
-          timers={timers}
-          setTimers={setTimers}
-          setShowTimers={setShowTimers}
-        />
+        <p className="clock__workout">
+          {timerStart ? time : stopwatchStart ? stopwatch : "Resume Workout"}
+        </p>
       )}
     </div>
   );

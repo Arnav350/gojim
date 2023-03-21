@@ -4,11 +4,16 @@ import SetLabels from "./SetLabels";
 import Clock from "./Clock";
 import RoutineExercise from "./RoutineExercise";
 import { Link } from "react-router-dom";
-import { BsChevronDown, BsAlarm, BsChevronUp } from "react-icons/bs";
+import { BsChevronDown, BsAlarm } from "react-icons/bs";
 import "../pages/Gym.css";
 
+interface IWorkout {
+  start: boolean;
+  show: boolean;
+}
+
 interface IProps {
-  workout: any;
+  workout: IWorkout;
   setWorkout: Function;
 }
 
@@ -67,7 +72,9 @@ function Workout(props: IProps) {
             ))}
             <button className="workout__add">Add Exercise</button>
           </div>
-          {showClock && <Clock setShowClock={setShowClock} />}
+          {showClock && (
+            <Clock workout={props.workout} setShowClock={setShowClock} />
+          )}
           {false && <PlateCalculator />}
           {false && <SetLabels />}
         </div>
@@ -77,9 +84,7 @@ function Workout(props: IProps) {
           onClick={() => props.setWorkout({ ...props.workout, show: true })}
         >
           <h3 className="workout__name">{workoutName}</h3>
-          <p className="workout__resume">
-            <BsChevronUp className="workout__up" /> Resume Workout
-          </p>
+          <Clock workout={props.workout} setShowClock={setShowClock} />
         </div>
       )}
     </main>
