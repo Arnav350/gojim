@@ -4,13 +4,13 @@ import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import Gym from "./pages/Gym";
-import Workout from "./components/Workout";
 import Nutrition from "./pages/Nutrition";
 import Food from "./pages/Food";
 import Connect from "./pages/Connect";
 import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
-import Nav from "./pages/Nav";
+import Nav from "./components/Nav";
+import Workout from "./components/Workout";
 import "./App.css";
 
 function App() {

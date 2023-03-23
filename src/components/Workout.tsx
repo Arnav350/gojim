@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import PlateCalculator from "./PlateCalculator";
 import SetLabels from "./SetLabels";
 import Clock from "./Clock";
-import RoutineExercise from "./RoutineExercise";
+import WorkoutExercise from "./WorkoutExercise";
+import WorkoutAdd from "./WorkoutAdd";
 import { Link } from "react-router-dom";
 import { BsChevronDown, BsAlarm } from "react-icons/bs";
-import "../pages/Gym.css";
+import "./Workout.css";
 
 interface IWorkout {
   start: boolean;
@@ -49,7 +50,7 @@ function Workout(props: IProps) {
   }
 
   return (
-    <main
+    <div
       className="workout"
       style={
         props.workout.show ? undefined : { bottom: "64px", height: "64px" }
@@ -80,12 +81,13 @@ function Workout(props: IProps) {
           </header>
           <div className="workout__exercises">
             {exercises.map((__, i) => (
-              <RoutineExercise key={i} name={exercises[i]} />
+              <WorkoutExercise key={i} name={exercises[i]} />
             ))}
             <button className="workout__add">Add Exercise</button>
           </div>
           {false && <PlateCalculator />}
           {false && <SetLabels />}
+          {true && <WorkoutAdd />}
         </div>
       ) : (
         <div className="workout__bar" onClick={handleUpClick}>
@@ -99,7 +101,7 @@ function Workout(props: IProps) {
         showClock={showClock}
         setShowClock={setShowClock}
       />
-    </main>
+    </div>
   );
 }
 

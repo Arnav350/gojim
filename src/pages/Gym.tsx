@@ -1,5 +1,5 @@
 import React from "react";
-import WorkoutLog from "../components/WorkoutLog";
+import GymLog from "../components/GymLog";
 import {
   BsGraphUp,
   BsPlusLg,
@@ -43,10 +43,10 @@ function Gym(props: IProps) {
           </div>
         </div>
         <div className="gym__logs">
-          <WorkoutLog />
-          <WorkoutLog />
-          <WorkoutLog />
-          <WorkoutLog />
+          <GymLog />
+          <GymLog />
+          <GymLog />
+          <GymLog />
         </div>
       </div>
     </main>

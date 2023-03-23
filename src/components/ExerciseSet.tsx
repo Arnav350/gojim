@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../pages/Gym.css";
+import "./Workout.css";
 
 interface IProps {
   id: number;

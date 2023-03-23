@@ -1,7 +1,7 @@
 import React, { CSSProperties, useEffect, useState } from "react";
 import EditTimers from "./EditTimers";
 import { BsSliders, BsXLg, BsPencilSquare, BsChevronUp } from "react-icons/bs";
-import "../pages/Gym.css";
+import "./Workout.css";
 
 interface IWorkout {
   start: boolean;
@@ -181,7 +181,7 @@ function Clock(props: IProps) {
               <div className="clock__timer" onClick={() => setShowTimers(true)}>
                 <BsPencilSquare className="clock__icon" />
               </div>
-              {timers.map((timer, i) => (
+              {timers.map((timer: number, i: number) => (
                 <div
                   className="clock__timer"
                   key={i}

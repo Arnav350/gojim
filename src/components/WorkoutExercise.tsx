@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import ExerciseSet from "./ExerciseSet";
 import { BsThreeDots } from "react-icons/bs";
-import "../pages/Gym.css";
+import "./Workout.css";
 
 interface IProps {
   name: string;
@@ -58,11 +58,11 @@ function RoutineExercise(props: IProps) {
         <h4 className="exercise__subtitle">Notes</h4>
       </div>
       <div className="exercise__sets">
-        {sets.map((__, i) => (
+        {prevSets.map((prevSet: IPrevSet, i: number) => (
           <ExerciseSet
             key={i}
             id={i}
-            prevSet={prevSets[i]}
+            prevSet={prevSet}
             sets={sets}
             setSets={setSets}
           />

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { BsXLg } from "react-icons/bs";
+import "./Workout.css";
 
 function PlateCalculator() {
   const plateLbs: number[] = [55, 45, 35, 25, 10, 5, 2.5];
@@ -17,12 +18,12 @@ function PlateCalculator() {
     let totalWeight = totalValue > barValue * 5 ? totalValue - barValue * 5 : 0;
 
     setNumberValues(
-      numberValues.map((__, i) => {
+      plateWeights.map((plateWeight: number, i: number) => {
         if (plateValues[i] === true) {
           return 0;
         } else {
-          const plateAmount = Math.floor(totalWeight / (plateWeights[i] * 2));
-          totalWeight %= plateWeights[i] * 2;
+          const plateAmount = Math.floor(totalWeight / (plateWeight * 2));
+          totalWeight %= plateWeight * 2;
           return plateAmount;
         }
       })

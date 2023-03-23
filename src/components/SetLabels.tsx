@@ -1,6 +1,6 @@
 import React from "react";
 import { BsChevronDown, BsTrash3 } from "react-icons/bs";
-import "../pages/Gym.css";
+import "./Workout.css";
 
 function SetLabels() {
   return (

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BsChevronDown, BsPlus, BsDash } from "react-icons/bs";
-import "../pages/Gym.css";
+import "./Workout.css";
 
 interface IProps {
   timers: number[];
@@ -54,7 +54,7 @@ function EditTimers(props: IProps) {
           onChange={(event) => setSeconds(Number(event.target.value))}
         />
       </div>
-      {props.timers.map((timer, i) => (
+      {props.timers.map((timer: number, i: number) => (
         <div key={i} className="timers__box">
           <BsDash
             className="timers__dash timers__icon"
