@@ -615,5 +615,100 @@
   flex-direction: column;
   padding: 8px;
   width: 100%;
-  background-color: #444;
+  background-color: #222;
+}
+
+.add__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.add__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  width: 100%;
+}
+
+.add__nav {
+  font-size: 32px;
+  color: #487;
+}
+
+.add__heading {
+  font-size: 24px;
+}
+
+.add__search {
+  display: flex;
+  width: 80%;
+  margin: 8px;
+  padding: 8px;
+  background-color: black;
+  border-radius: 18px;
+}
+
+.add__magnify {
+  margin: 0 4px;
+  font-size: 20px;
+  color: #444;
+}
+
+.add__input {
+  background-color: transparent;
+  width: 100%;
+  font-size: 16px;
+}
+
+.add__exercises {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add__exercise {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  border-bottom: solid 1px #444;
+}
+
+.add__box {
+  display: flex;
+  gap: 8px;
+}
+
+.add__image {
+  height: 64px;
+  width: 64px;
+  border-radius: 50%;
+}
+
+.add__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.add__name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.add__muscle {
+  color: #999;
+}
+
+.add__plus {
+  height: 32px;
+  width: 32px;
+  margin: 8px;
+  padding: 4px;
+  background-color: #487;
+  border-radius: 50%;
+  color: #eee;
 }
