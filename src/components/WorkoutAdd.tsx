@@ -24,6 +24,7 @@ function WorkoutAdd(props: IProps) {
   ]);
 
   const [search, setSearch] = useState<string>("");
+  const [showNew, setShowNew] = useState<boolean>(false);
 
   return (
     <div className="add">
@@ -31,7 +32,7 @@ function WorkoutAdd(props: IProps) {
         <div className="add__header">
           <BsXLg className="add__nav" onClick={() => props.setShowAdd(false)} />
           <h2 className="add__heading">Add Exercise</h2>
-          <BsPlusLg className="add__nav" />
+          <BsPlusLg className="add__nav" onClick={() => setShowNew(true)} />
         </div>
         <div className="add__search">
           <BsSearch className="add__magnify" />
@@ -72,7 +73,7 @@ function WorkoutAdd(props: IProps) {
             </div>
           ))}
       </div>
-      <WorkoutNew />
+      {showNew && <WorkoutNew setShowNew={setShowNew} />}
     </div>
   );
 }
