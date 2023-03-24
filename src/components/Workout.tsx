@@ -20,6 +20,7 @@ interface IProps {
 
 function Workout(props: IProps) {
   const [showClock, setShowClock] = useState<boolean>(false);
+  const [showAdd, setShowAdd] = useState<boolean>(false);
 
   const [date, setDate] = useState();
   const [workoutName, setWorkoutName] = useState<string>("Workout Name");
@@ -83,11 +84,13 @@ function Workout(props: IProps) {
             {exercises.map((__, i) => (
               <WorkoutExercise key={i} name={exercises[i]} />
             ))}
-            <button className="workout__add">Add Exercise</button>
+            <button className="workout__add" onClick={() => setShowAdd(true)}>
+              Add Exercise
+            </button>
           </div>
           {false && <PlateCalculator />}
           {false && <SetLabels />}
-          {true && <WorkoutAdd />}
+          {showAdd && <WorkoutAdd setShowAdd={setShowAdd} />}
         </div>
       ) : (
         <div className="workout__bar" onClick={handleUpClick}>

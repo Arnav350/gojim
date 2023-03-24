@@ -16,7 +16,7 @@ function Food() {
   const heading = useRef<HTMLInputElement>(null!);
 
   const [edit, setEdit] = useState<boolean>(false);
-  const [inp, setInp] = useState<string>("Meal Name");
+  const [mealName, setMealName] = useState<string>("Meal Name");
 
   function toggleHeadingEdit() {
     if (edit) {
@@ -39,11 +39,11 @@ function Food() {
           <input
             type="text"
             placeholder="Meal Name"
-            value={inp}
+            value={mealName}
             readOnly={true}
             className="food__heading"
             ref={heading}
-            onChange={(event) => setInp(event.target.value)}
+            onChange={(event) => setMealName(event.target.value)}
           />
           <button className="food__edit" onClick={toggleHeadingEdit}>
             {edit ? (

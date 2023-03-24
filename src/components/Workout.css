@@ -615,7 +615,7 @@
   flex-direction: column;
   padding: 8px;
   width: 100%;
-  background-color: #222;
+  background-color: #161616;
 }
 
 .add__top {
@@ -643,15 +643,16 @@
 
 .add__search {
   display: flex;
+  align-items: center;
   width: 80%;
   margin: 8px;
   padding: 8px;
-  background-color: black;
+  background-color: #000;
   border-radius: 18px;
 }
 
 .add__magnify {
-  margin: 0 4px;
+  margin: 0 8px 0 4px;
   font-size: 20px;
   color: #444;
 }
