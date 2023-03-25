@@ -21,6 +21,7 @@ function WorkoutAdd(props: IProps) {
     { name: "Squat", muscle: "Quads" },
     { name: "Rope Tricep Extension", muscle: "Triceps" },
     { name: "Ab Crunch", muscle: "Abs" },
+    { name: "Fly", muscle: "Chest" },
   ]);
 
   const [search, setSearch] = useState<string>("");

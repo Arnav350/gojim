@@ -10,6 +10,22 @@ function WorkoutNew(props: IProps) {
   const [exerciseName, setExerciseName] = useState<string>("");
   const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
+  const muscles: string[] = [
+    "Chest",
+    "Back",
+    "Biceps",
+    "Triceps",
+    "Lats",
+    "Shoulders",
+    "Quads",
+    "Hamstrings",
+    "Core",
+    "Calves",
+    "Forearms",
+    "Cardio",
+    "Other",
+  ];
+
   function handleClick() {}
 
   return (
@@ -26,14 +42,19 @@ function WorkoutNew(props: IProps) {
         className="new__input"
         onChange={(event) => setExerciseName(event.target.value)}
       />
-      <label htmlFor="test" className="new__dropdown">
-        Muscle Group <BsChevronDown className="new__down" />
-      </label>
-      <select name="test" id="test">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+      <div className="new__dropdown">
+        <label htmlFor="new__select" className="new__label">
+          Muscle Group:
+        </label>
+        <BsChevronDown className="new__down" />
+        <select id="new__select" className="new__select">
+          {muscles.map((muscle: string, i: number) => (
+            <option key={i} value={muscle} className="new__option">
+              {muscle}
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 }
