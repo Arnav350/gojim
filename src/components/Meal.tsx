@@ -21,7 +21,12 @@ function Meal() {
     <div className="meal">
       <div className="meal__top">
         <h4 className="meal__heading">Lunch</h4>
-        <h4 className="meal__total">2400</h4>
+        <h4 className="meal__total">
+          {foods.reduce(
+            (total: number, { calories }) => (total += calories),
+            0
+          )}
+        </h4>
       </div>
       {foods.map((food: IFood, i: number) => (
         <div key={i} className="meal__box">

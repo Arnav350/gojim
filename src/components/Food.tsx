@@ -1,6 +1,5 @@
 import React, { useRef, useState } from "react";
-import NutritionHistory from "../components/NutritionHistory";
-import { Link } from "react-router-dom";
+import NutritionHistory from "./NutritionHistory";
 import {
   BsArrowLeft,
   BsPencilSquare,
@@ -10,13 +9,26 @@ import {
   BsStopwatch,
   BsBasket,
 } from "react-icons/bs";
-import "./Food.css";
+import "../pages/Nutrition.css";
 
-function Food() {
+interface IProps {
+  setShowFood: Function;
+}
+
+function Food(props: IProps) {
   const heading = useRef<HTMLInputElement>(null!);
 
   const [edit, setEdit] = useState<boolean>(false);
   const [mealName, setMealName] = useState<string>("Meal Name");
+
+  const [histories, setHistories] = useState([
+    {
+      name: "Extra Virgin Olive Oil",
+      calories: 460,
+      amount: 4,
+      amountType: "tbsp",
+    },
+  ]);
 
   function toggleHeadingEdit() {
     if (edit) {
@@ -33,9 +45,10 @@ function Food() {
     <main className="food">
       <header className="food__top">
         <div className="food__header">
-          <Link to="/nutrition">
-            <BsArrowLeft className="food__nav" />
-          </Link>
+          <BsArrowLeft
+            className="food__nav"
+            onClick={() => props.setShowFood(false)}
+          />
           <input
             type="text"
             placeholder="Meal Name"

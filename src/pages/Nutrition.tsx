@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import Food from "../components/Food";
 import Meal from "../components/Meal";
-import { Link } from "react-router-dom";
 import { BsGraphUp, BsPlusLg } from "react-icons/bs";
 import "./Nutrition.css";
 
 function Nutrition() {
+  const [showFood, setShowFood] = useState(false);
+
   const [mealTitle, setMealTitle] = useState("");
 
   return (
@@ -12,9 +14,10 @@ function Nutrition() {
       <header className="nutrition__top">
         <BsGraphUp className="nutrition__nav" />
         <h2 className="nutrition__heading">Nutrition</h2>
-        <Link to="/food">
-          <BsPlusLg className="nutrition__nav" />
-        </Link>
+        <BsPlusLg
+          className="nutrition__nav"
+          onClick={() => setShowFood(true)}
+        />
       </header>
       <div className="nutrition__scroll">
         <div className="nutrition__macros">
@@ -57,15 +60,19 @@ function Nutrition() {
               className="nutrition__input"
               onChange={(event) => setMealTitle(event.target.value)}
             />
-            <Link to="/food">
-              <button className="nutrition__button">Add Meal</button>
-            </Link>
+            <button
+              className="nutrition__button"
+              onClick={() => setShowFood(true)}
+            >
+              Add Meal
+            </button>
           </div>
           <Meal />
           <Meal />
           <Meal />
         </div>
       </div>
+      {showFood && <Food setShowFood={setShowFood} />}
     </main>
   );
 }
