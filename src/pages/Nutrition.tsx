@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import Meal from "../components/Meal";
 import { Link } from "react-router-dom";
 import { BsGraphUp, BsPlusLg } from "react-icons/bs";
 import "./Nutrition.css";
 
 function Nutrition() {
+  const [mealTitle, setMealTitle] = useState("");
+
   return (
     <main className="nutrition">
       <header className="nutrition__top">
@@ -50,8 +52,10 @@ function Nutrition() {
           <div className="nutrition__add">
             <input
               type="text"
+              value={mealTitle}
               placeholder="Meal Title..."
               className="nutrition__input"
+              onChange={(event) => setMealTitle(event.target.value)}
             />
             <Link to="/food">
               <button className="nutrition__button">Add Meal</button>

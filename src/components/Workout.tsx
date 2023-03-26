@@ -75,7 +75,7 @@ function Workout(props: IProps) {
               onChange={(event) => setWorkoutName(event.target.value)}
             />
             <div className="workout__navs">
-              <Link to="/workout" className="workout__finish">
+              <Link to="/gym" className="workout__finish">
                 Finish
               </Link>
             </div>

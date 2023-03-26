@@ -666,9 +666,8 @@
 .add__exercises {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .add__exercise {
