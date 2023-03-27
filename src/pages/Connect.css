@@ -44,8 +44,7 @@
   overflow-x: auto;
 }
 
-.connect__outline,
-.icon {
+.connect__outline {
   position: relative;
   display: flex;
   justify-content: center;
@@ -59,7 +58,7 @@
 }
 
 .connect__new,
-.icon__picture {
+.connect__picture {
   height: 80px;
   width: 80px;
   border-radius: 50%;
@@ -77,12 +76,17 @@
   color: #444;
 }
 
-.connect__add,
-.icon__name {
+.connect__name {
   position: absolute;
   top: 92px;
   font-size: 14px;
   text-align: center;
+}
+
+.connect__seen {
+  position: absolute;
+  font-size: 36px;
+  color: #eee;
 }
 
 .user {
