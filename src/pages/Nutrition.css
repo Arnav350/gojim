@@ -52,48 +52,15 @@
   width: 96px;
   height: 96px;
   margin-bottom: 32px;
-}
-
-.nutrition__circle::before {
-  content: "";
-  position: absolute;
   border-radius: 50%;
   inset: 0;
-  mask: radial-gradient(farthest-side, #0000 calc(99% - 8px), #000 calc(100% - 8px));
 }
 
-.nutrition__calorie::before {
-  background: conic-gradient(pink 20%, #0000 0),
-    #444;
-}
-
-.nutrition__protein::before {
-  background: conic-gradient(orange 100%, #0000 0),
-    #444;
-}
-
-.nutrition__protein::after {
-  content: "";
+.nutrition__mask {
   position: absolute;
+  inset: 8px;
+  background-color: #161616;
   border-radius: 50%;
-  inset: 0;
-  mask: radial-gradient(farthest-side, #0000 calc(99% - 8px), #000 calc(100% - 8px));
-  background: conic-gradient(darkorange 40%, #0000 0);
-}
-
-.nutrition__fat::before {
-  background: conic-gradient(turquoise 30%, #0000 0),
-    #444;
-}
-
-.nutrition__carb::before {
-  background: conic-gradient(purple 80%, #0000 0),
-    #444;
-}
-
-.nutrition__water::before {
-  background: conic-gradient(lightblue 80%, #0000 0),
-    #444;
 }
 
 .nutrition__grams,
@@ -270,7 +237,7 @@
   padding: 16px;
 }
 
-.history {
+.food__history {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -280,25 +247,25 @@
   border-radius: 8px;
 }
 
-.history__text {
+.food__text {
   padding: 8px;
   display: flex;
   flex-direction: column;
 }
 
-.history__name {
+.food__name {
   font-size: 16px;
   font-weight: 400;
 }
 
-.history__info {
+.food__info {
   margin-top: 2px;
   color: #999;
   font-size: 14px;
   font-weight: 400;
 }
 
-.history__icon {
+.food__add {
   margin: 8px;
   height: 32px;
   width: 32px;

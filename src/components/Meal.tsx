@@ -1,6 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 import "../pages/Nutrition.css";
+
+interface IProps {
+  title: string;
+  setShowFood: Function;
+}
 
 interface IFood {
   name: string;
@@ -10,7 +14,7 @@ interface IFood {
 
 type IFoods = IFood[];
 
-function Meal() {
+function Meal(props: IProps) {
   const [foods, setFoods] = useState<IFoods>([
     { name: "Pasta", grams: 200, calories: 800 },
     { name: "Chocolate and Marshmellow Cookie", grams: 1000, calories: 10000 },
@@ -20,7 +24,7 @@ function Meal() {
   return (
     <div className="meal">
       <div className="meal__top">
-        <h4 className="meal__heading">Lunch</h4>
+        <h4 className="meal__heading">{props.title}</h4>
         <h4 className="meal__total">
           {foods.reduce(
             (total: number, { calories }) => (total += calories),
@@ -37,9 +41,9 @@ function Meal() {
           <p className="meal__calories">{food.calories}</p>
         </div>
       ))}
-      <Link to="/food">
-        <button className="meal__button">Add Food</button>
-      </Link>
+      <button className="meal__button" onClick={() => props.setShowFood(true)}>
+        Add Food
+      </button>
     </div>
   );
 }

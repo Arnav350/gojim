@@ -9,6 +9,20 @@ function Nutrition() {
 
   const [mealTitle, setMealTitle] = useState("");
 
+  const [macros, setMacros] = useState([2000, 160, 50, 120, 8]);
+  const [totals, setTotals] = useState([3000, 130, 100, 600, 24]);
+
+  const [meals, setMeals] = useState<string[]>(["Lunch", "Dinner", "Snack"]);
+
+  function handleClick() {
+    setShowFood(true);
+    if (mealTitle) {
+      setMeals([...meals, mealTitle]);
+    } else {
+      setMeals([...meals, "Meal Name"]);
+    }
+  }
+
   return (
     <main className="nutrition">
       <header className="nutrition__top">
@@ -23,29 +37,109 @@ function Nutrition() {
         <div className="nutrition__macros">
           <h3 className="nutrition__subheading">Macros</h3>
           <div className="nutrition__circles">
-            <div className="nutrition__circle nutrition__calorie">
-              <h2 className="nutrition__grams">2000cal</h2>
-              <h5 className="nutrition__total">/ 3000cal</h5>
+            <div
+              className="nutrition__circle"
+              style={
+                macros[0] < totals[0]
+                  ? {
+                      background: `conic-gradient(#4499ee ${
+                        (macros[0] / totals[0]) * 100
+                      }%, #444 0)`,
+                    }
+                  : {
+                      background: `conic-gradient(#4477ff ${
+                        (macros[0] / totals[0]) * 100 - 100
+                      }%, #4499ee 0)`,
+                    }
+              }
+            >
+              <div className="nutrition__mask"></div>
+              <h2 className="nutrition__grams">{macros[0]}cal</h2>
+              <h5 className="nutrition__total">/ {totals[0]}cal</h5>
               <p className="nutrition__label">Calories</p>
             </div>
-            <div className="nutrition__circle nutrition__protein">
-              <h2 className="nutrition__grams">130g</h2>
-              <h5 className="nutrition__total">/ 160g</h5>
+            <div
+              className="nutrition__circle"
+              style={
+                macros[1] < totals[1]
+                  ? {
+                      background: `conic-gradient(orange ${
+                        (macros[1] / totals[1]) * 100
+                      }%, #444 0)`,
+                    }
+                  : {
+                      background: `conic-gradient(darkorange ${
+                        (macros[1] / totals[1]) * 100 - 100
+                      }%, orange 0)`,
+                    }
+              }
+            >
+              <div className="nutrition__mask"></div>
+              <h2 className="nutrition__grams">{macros[1]}g</h2>
+              <h5 className="nutrition__total">/ {totals[1]}g</h5>
               <p className="nutrition__label">Protein</p>
             </div>
-            <div className="nutrition__circle nutrition__fat">
-              <h2 className="nutrition__grams">130g</h2>
-              <h5 className="nutrition__total">/ 160g</h5>
+            <div
+              className="nutrition__circle"
+              style={
+                macros[2] < totals[2]
+                  ? {
+                      background: `conic-gradient(blue ${
+                        (macros[2] / totals[2]) * 100
+                      }%, #444 0)`,
+                    }
+                  : {
+                      background: `conic-gradient(darkblue ${
+                        (macros[2] / totals[2]) * 100 - 100
+                      }%, blue 0)`,
+                    }
+              }
+            >
+              <div className="nutrition__mask"></div>
+              <h2 className="nutrition__grams">{macros[2]}g</h2>
+              <h5 className="nutrition__total">/ {totals[2]}g</h5>
               <p className="nutrition__label">Fat</p>
             </div>
-            <div className="nutrition__circle nutrition__carb">
-              <h2 className="nutrition__grams">130g</h2>
-              <h5 className="nutrition__total">/ 160g</h5>
+            <div
+              className="nutrition__circle"
+              style={
+                macros[3] < totals[3]
+                  ? {
+                      background: `conic-gradient(purple ${
+                        (macros[3] / totals[3]) * 100
+                      }%, #444 0)`,
+                    }
+                  : {
+                      background: `conic-gradient(indigo ${
+                        (macros[3] / totals[3]) * 100 - 100
+                      }%, purple 0)`,
+                    }
+              }
+            >
+              <div className="nutrition__mask"></div>
+              <h2 className="nutrition__grams">{macros[3]}g</h2>
+              <h5 className="nutrition__total">/ {totals[3]}g</h5>
               <p className="nutrition__label">Carbs</p>
             </div>
-            <div className="nutrition__circle nutrition__water">
-              <h2 className="nutrition__grams">8oz</h2>
-              <h5 className="nutrition__total">/ 96g</h5>
+            <div
+              className="nutrition__circle"
+              style={
+                macros[4] < totals[4]
+                  ? {
+                      background: `conic-gradient(lightblue ${
+                        (macros[4] / totals[4]) * 100
+                      }%, #444 0)`,
+                    }
+                  : {
+                      background: `conic-gradient(blue ${
+                        (macros[4] / totals[4]) * 100 - 100
+                      }%, lightblue 0)`,
+                    }
+              }
+            >
+              <div className="nutrition__mask"></div>
+              <h2 className="nutrition__grams">{macros[4]}oz</h2>
+              <h5 className="nutrition__total">/ {totals[4]}oz</h5>
               <p className="nutrition__label">Water</p>
             </div>
           </div>
@@ -60,19 +154,18 @@ function Nutrition() {
               className="nutrition__input"
               onChange={(event) => setMealTitle(event.target.value)}
             />
-            <button
-              className="nutrition__button"
-              onClick={() => setShowFood(true)}
-            >
+            <button className="nutrition__button" onClick={handleClick}>
               Add Meal
             </button>
           </div>
-          <Meal />
-          <Meal />
-          <Meal />
+          {meals.map((meal: string, i: number) => (
+            <Meal key={i} title={meal} setShowFood={setShowFood} />
+          ))}
         </div>
       </div>
-      {showFood && <Food setShowFood={setShowFood} />}
+      {showFood && (
+        <Food setShowFood={setShowFood} meals={meals} setMeals={setMeals} />
+      )}
     </main>
   );
 }

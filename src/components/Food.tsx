@@ -1,5 +1,4 @@
 import React, { useRef, useState } from "react";
-import NutritionHistory from "./NutritionHistory";
 import {
   BsArrowLeft,
   BsPencilSquare,
@@ -8,12 +7,24 @@ import {
   BsUpcScan,
   BsStopwatch,
   BsBasket,
+  BsPlus,
 } from "react-icons/bs";
 import "../pages/Nutrition.css";
 
 interface IProps {
   setShowFood: Function;
+  meals: string[];
+  setMeals: Function;
 }
+
+interface IHistory {
+  name: string;
+  calories: number;
+  amount: number;
+  amountType: string;
+}
+
+type IHistories = IHistory[];
 
 function Food(props: IProps) {
   const heading = useRef<HTMLInputElement>(null!);
@@ -21,12 +32,18 @@ function Food(props: IProps) {
   const [edit, setEdit] = useState<boolean>(false);
   const [mealName, setMealName] = useState<string>("Meal Name");
 
-  const [histories, setHistories] = useState([
+  const [histories, setHistories] = useState<IHistories>([
     {
       name: "Extra Virgin Olive Oil",
       calories: 460,
       amount: 4,
       amountType: "tbsp",
+    },
+    {
+      name: "Pizza",
+      calories: 600,
+      amount: 2,
+      amountType: "slices",
     },
   ]);
 
@@ -39,6 +56,14 @@ function Food(props: IProps) {
       heading.current.readOnly = false;
       heading.current.select();
     }
+  }
+
+  function handleBlur() {
+    // if (mealName) {
+    //   props.setMeals([...props.meals, mealName]);
+    // } else {
+    //   props.setMeals([...props.meals, "Meal Name"]);
+    // }
   }
 
   return (
@@ -57,6 +82,7 @@ function Food(props: IProps) {
             className="food__heading"
             ref={heading}
             onChange={(event) => setMealName(event.target.value)}
+            onBlur={handleBlur}
           />
           <button className="food__edit" onClick={toggleHeadingEdit}>
             {edit ? (
@@ -96,9 +122,21 @@ function Food(props: IProps) {
         </div>
         <div className="food__box">
           <h3 className="food__subheading">History</h3>
-          <NutritionHistory />
-          <NutritionHistory />
-          <NutritionHistory />
+          {histories.map((history: IHistory, i: number) => (
+            <div key={i} className="food__history">
+              <div className="food__text">
+                <h4 className="food__name">{history.name}</h4>
+                <p className="food__info">
+                  {history.calories} cal - {history.amount} {history.amountType}
+                </p>
+              </div>
+              {true ? (
+                <BsPlus className="food__add" />
+              ) : (
+                <BsCheckLg className="food__add" />
+              )}
+            </div>
+          ))}
         </div>
       </div>
     </main>
