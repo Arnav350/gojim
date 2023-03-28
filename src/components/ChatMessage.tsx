@@ -1,25 +1,34 @@
 import React from "react";
+import "../pages/Connect.css";
 
-function ChatMessage() {
+interface IMessage {
+  text?: string;
+  image?: string;
+  date: string;
+}
+
+interface IProps {
+  message: IMessage;
+}
+
+function ChatMessage(props: IProps) {
   return (
     <div className="my message">
-      {true && (
+      {props.message.text && (
         <div className="message__box">
           <p className="message__text">
-            Lorem ipsu
-            <span className="message__space">1:00 PM</span>
+            {props.message.text}
+            <span className="message__space">{props.message.date}</span>
           </p>
-          <p className="message__date">1:00 PM</p>
+          <p className="message__date">{props.message.date}</p>
         </div>
       )}
-      {true && (
+      {props.message.image && (
         <figure className="message__figure">
-          <img
-            src="https://picsum.photos/400"
-            alt=""
-            className="message__image"
-          />
-          <figcaption className="message__caption">1:00 PM</figcaption>
+          <img src={props.message.image} alt="" className="message__image" />
+          <figcaption className="message__caption">
+            {props.message.date}
+          </figcaption>
         </figure>
       )}
     </div>

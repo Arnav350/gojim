@@ -6,7 +6,6 @@ import SignUp from "./pages/SignUp";
 import Gym from "./pages/Gym";
 import Nutrition from "./pages/Nutrition";
 import Connect from "./pages/Connect";
-import Chat from "./pages/Chat";
 import Profile from "./pages/Profile";
 import Nav from "./components/Nav";
 import Workout from "./components/Workout";
@@ -35,7 +34,6 @@ function App() {
         Calculates your calorires, macros, water, and weight goal */}
 
         <Route path="/connect" element={<Connect />} />
-        <Route path="/chat" element={<Chat />} />
         {/* Messaging and Stories Page
         Has stories, messaging feature (need to figure out how to add friends), pr competitions */}
 

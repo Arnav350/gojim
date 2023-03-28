@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import ConnectUser from "../components/ConnectUser";
+import Chat from "../components/Chat";
 import { BsSearch, BsPlusLg, BsArrowRepeat } from "react-icons/bs";
 import "./Connect.css";
 
@@ -21,8 +21,10 @@ interface IUser {
 
 type IUsers = IUser[];
 
+const seen: boolean = true;
+
 function Connect() {
-  const seen = true;
+  const [currentUser, setCurrentUser] = useState<string>("");
 
   const [stories, setStories] = useState<IStories>([
     { picture: "https://picsum.photos/200/300", name: "Arnav Patel" },
@@ -33,6 +35,7 @@ function Connect() {
     },
     { picture: "https://picsum.photos/200/300", name: "Arnav Patel" },
   ]);
+
   const [users, setUsers] = useState<IUsers>([
     {
       picture: "https://picsum.photos/200",
@@ -75,16 +78,16 @@ function Connect() {
       </header>
       <div className="connect__scroll">
         <div className="connect__stories">
-          <div className="connect__outline">
+          <div className="connect__story">
             <div className="connect__new">
               <BsPlusLg className="connect__plus" />
             </div>
-            <p className="connect__name">Add story</p>
+            <p className="connect__text">Add story</p>
           </div>
           {stories.map((story: IStory, i: number) => (
             <div
               key={i}
-              className="connect__outline"
+              className="connect__story"
               style={story.seen ? { border: "2px solid #eee" } : undefined}
             >
               <img
@@ -93,24 +96,37 @@ function Connect() {
                 className="connect__picture"
                 style={story.seen ? { opacity: "0.4" } : undefined}
               />
-              <p className="connect__name">{story.name}</p>
-              {story.seen && <BsArrowRepeat className="connect__seen" />}
+              <p className="connect__text">{story.name}</p>
+              {story.seen && <BsArrowRepeat className="connect__replay" />}
             </div>
           ))}
         </div>
         <div className="connect__contacts">
           {users.map((user: IUser, i: number) => (
-            <ConnectUser
+            <div
               key={i}
-              picture={user.picture}
-              name={user.name}
-              time={user.time}
-              last={user.last}
-              seen={user.seen}
-            />
+              className="connect__contact"
+              onClick={() => setCurrentUser(user.name)}
+            >
+              <div
+                className="connect__circle"
+                style={user.seen ? { backgroundColor: "#487" } : undefined}
+              ></div>
+              <img src={user.picture} alt="" className="connect__avatar" />
+              <div className="connect__user">
+                <div className="connect__info">
+                  <h4 className="connect__name">{user.name}</h4>
+                  <p className="connect__time">{user.time}</p>
+                </div>
+                <p className="connect__last">{user.last}</p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
+      {currentUser && (
+        <Chat currentUser={currentUser} setCurrentUser={setCurrentUser} />
+      )}
     </main>
   );
 }
