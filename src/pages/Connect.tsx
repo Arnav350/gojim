@@ -14,14 +14,12 @@ type IStories = IStory[];
 interface IUser {
   picture: string;
   name: string;
-  time: string;
+  date: string;
   last: string;
   seen?: boolean;
 }
 
 type IUsers = IUser[];
-
-const seen: boolean = true;
 
 function Connect() {
   const [currentUser, setCurrentUser] = useState<string>("");
@@ -31,7 +29,7 @@ function Connect() {
     {
       picture: "https://picsum.photos/200/300",
       name: "Arnav Patel",
-      seen,
+      seen: true,
     },
     { picture: "https://picsum.photos/200/300", name: "Arnav Patel" },
   ]);
@@ -40,29 +38,44 @@ function Connect() {
     {
       picture: "https://picsum.photos/200",
       name: "Arnav Patel",
-      time: "4:32 PM",
+      date: "4:32 PM",
       last: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta amet quasi vero dolorum obcaecati nostrum? Ipsa natus tempore hic debitis dolorem cum ut saepe ullam, nostrum, quia sapiente consequuntur eligendi?",
     },
     {
       picture: "https://picsum.photos/200",
       name: "Arnav Patel",
-      time: "4:32 PM",
+      date: "4:32 PM",
       last: "Lorem ipsum dolor sit",
-      seen,
+      seen: true,
     },
     {
       picture: "https://picsum.photos/200",
       name: "Arnav Patel",
-      time: "4:32 PM",
+      date: "4:32 PM",
       last: "Lorem ipsum dolor sit",
+      seen: true,
     },
     {
       picture: "https://picsum.photos/200",
       name: "Arnav Patel",
-      time: "4:32 PM",
+      date: "4:32 PM",
       last: "Lorem ipsum dolor sit",
+      seen: true,
     },
   ]);
+
+  function handleStoryClick(i: number) {
+    const tempStory = [...stories];
+    tempStory[i].seen = true;
+    setStories(tempStory);
+  }
+
+  function handleUserClick(i: number) {
+    setCurrentUser(users[i].name);
+    const tempUser = [...users];
+    tempUser[i].seen = true;
+    setUsers(tempUser);
+  }
 
   return (
     <main className="connect">
@@ -89,6 +102,7 @@ function Connect() {
               key={i}
               className="connect__story"
               style={story.seen ? { border: "2px solid #eee" } : undefined}
+              onClick={() => handleStoryClick(i)}
             >
               <img
                 src={story.picture}
@@ -106,17 +120,19 @@ function Connect() {
             <div
               key={i}
               className="connect__contact"
-              onClick={() => setCurrentUser(user.name)}
+              onClick={() => handleUserClick(i)}
             >
               <div
                 className="connect__circle"
-                style={user.seen ? { backgroundColor: "#487" } : undefined}
+                style={
+                  user.seen ? { backgroundColor: "transparent" } : undefined
+                }
               ></div>
               <img src={user.picture} alt="" className="connect__avatar" />
               <div className="connect__user">
                 <div className="connect__info">
                   <h4 className="connect__name">{user.name}</h4>
-                  <p className="connect__time">{user.time}</p>
+                  <p className="connect__date">{user.date}</p>
                 </div>
                 <p className="connect__last">{user.last}</p>
               </div>
