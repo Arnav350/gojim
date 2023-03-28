@@ -11,6 +11,16 @@ interface IStory {
 
 type IStories = IStory[];
 
+interface IUser {
+  picture: string;
+  name: string;
+  time: string;
+  last: string;
+  seen?: boolean;
+}
+
+type IUsers = IUser[];
+
 function Connect() {
   const seen = true;
 
@@ -23,7 +33,33 @@ function Connect() {
     },
     { picture: "https://picsum.photos/200/300", name: "Arnav Patel" },
   ]);
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState<IUsers>([
+    {
+      picture: "https://picsum.photos/200",
+      name: "Arnav Patel",
+      time: "4:32 PM",
+      last: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta amet quasi vero dolorum obcaecati nostrum? Ipsa natus tempore hic debitis dolorem cum ut saepe ullam, nostrum, quia sapiente consequuntur eligendi?",
+    },
+    {
+      picture: "https://picsum.photos/200",
+      name: "Arnav Patel",
+      time: "4:32 PM",
+      last: "Lorem ipsum dolor sit",
+      seen,
+    },
+    {
+      picture: "https://picsum.photos/200",
+      name: "Arnav Patel",
+      time: "4:32 PM",
+      last: "Lorem ipsum dolor sit",
+    },
+    {
+      picture: "https://picsum.photos/200",
+      name: "Arnav Patel",
+      time: "4:32 PM",
+      last: "Lorem ipsum dolor sit",
+    },
+  ]);
 
   return (
     <main className="connect">
@@ -63,15 +99,16 @@ function Connect() {
           ))}
         </div>
         <div className="connect__contacts">
-          <ConnectUser />
-          <ConnectUser />
-          <ConnectUser />
-          <ConnectUser />
-          <ConnectUser />
-          <ConnectUser />
-          <ConnectUser />
-          <ConnectUser />
-          <ConnectUser />
+          {users.map((user: IUser, i: number) => (
+            <ConnectUser
+              key={i}
+              picture={user.picture}
+              name={user.name}
+              time={user.time}
+              last={user.last}
+              seen={user.seen}
+            />
+          ))}
         </div>
       </div>
     </main>
