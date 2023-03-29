@@ -1,8 +1,24 @@
 .sign {
+  position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
   align-items: center;
+  padding: 32px;
   height: 100%;
+  overflow: hidden;
+}
+
+.sign__background {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 70%;
+  background-color: #487;
+  border-radius: 50%;
+  translate: 0 -30%;
+  rotate: 75deg;
+  z-index: -1;
 }
 
 .sign__heading {
@@ -27,7 +43,7 @@
   gap: 8px;
   margin: 8px;
   padding: 8px;
-  border-bottom: 2px solid #999;
+  border-bottom: 2px solid #444;
 }
 
 .sign__icon,
@@ -58,6 +74,8 @@
 }
 
 .sign__bottom {
+  position: absolute;
+  bottom: 32px;
   color: #999;
 }
 

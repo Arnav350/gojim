@@ -8,6 +8,7 @@ function SignIn() {
 
   return (
     <div className="sign">
+      <div className="sign__background"></div>
       <h1 className="sign__heading">Login</h1>
       <div className="sign__form">
         <div className="sign__box">
