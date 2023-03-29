@@ -32,7 +32,7 @@ function SignIn() {
             )}
           </button>
         </div>
-        <input type="submit" value="Login" className="sign__button" />
+        <button className="sign__button">Login</button>
       </div>
       <p className="sign__bottom">
         Don't have an account?{" "}

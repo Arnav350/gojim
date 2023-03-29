@@ -58,7 +58,7 @@ function SignUp() {
             className="sign__input"
           />
         </div>
-        <input type="submit" value="Register" className="sign__button" />
+        <button className="sign__button">Register</button>
       </div>
       <p className="sign__bottom">
         Already have an account?{" "}
