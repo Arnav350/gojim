@@ -1,0 +1,12 @@
+.compete {
+  display: flex;
+  flex-direction: column;
+}
+
+.compete__top {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  width: 100%;
+  background-color: #111;
+}

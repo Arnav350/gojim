@@ -1,6 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { FaDumbbell, FaUtensils, FaCommentAlt, FaUser } from "react-icons/fa";
+import {
+  FaDumbbell,
+  FaUtensils,
+  FaTrophy,
+  FaCommentAlt,
+  FaUser,
+} from "react-icons/fa";
 import "./Nav.css";
 
 function Nav() {
@@ -11,6 +17,9 @@ function Nav() {
       </Link>
       <Link to="/nutrition">
         <FaUtensils className="nav__icon" />
+      </Link>
+      <Link to="/compete">
+        <FaTrophy className="nav__icon" />
       </Link>
       <Link to="/connect">
         <FaCommentAlt className="nav__icon" />

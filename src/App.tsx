@@ -3,11 +3,12 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
+import Nav from "./components/Nav";
 import Gym from "./pages/Gym";
 import Nutrition from "./pages/Nutrition";
 import Connect from "./pages/Connect";
+import Compete from "./pages/Compete";
 import Profile from "./pages/Profile";
-import Nav from "./components/Nav";
 import Workout from "./components/Workout";
 import "./App.css";
 
@@ -32,6 +33,10 @@ function App() {
         <Route path="/nutrition" element={<Nutrition />} />
         {/* Nutrition Page
         Calculates your calorires, macros, water, and weight goal */}
+
+        <Route path="/compete" element={<Compete />} />
+        {/* Compete Page
+        Compete against other individuals in big 3 */}
 
         <Route path="/connect" element={<Connect />} />
         {/* Messaging and Stories Page
