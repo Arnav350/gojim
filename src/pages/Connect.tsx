@@ -62,6 +62,20 @@ function Connect() {
       last: "Lorem ipsum dolor sit",
       seen: true,
     },
+    {
+      picture: "https://picsum.photos/200",
+      name: "Arnav Patel",
+      date: "4:32 PM",
+      last: "Lorem ipsum dolor sit",
+      seen: true,
+    },
+    {
+      picture: "https://picsum.photos/200",
+      name: "Arnav Patel",
+      date: "4:32 PM",
+      last: "Lorem ipsum dolor sit",
+      seen: true,
+    },
   ]);
 
   function handleStoryClick(i: number) {

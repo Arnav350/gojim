@@ -1,0 +1,72 @@
+.sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+}
+
+.sign__heading {
+  font-size: 64px;
+}
+
+.sign__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sign__names {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sign__box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin: 8px;
+  padding: 8px;
+  border-bottom: 2px solid #999;
+}
+
+.sign__icon,
+.sign__eye {
+  color: #999;
+  font-size: 24px;
+}
+
+.sign__input {
+  background-color: transparent;
+  font-size: 16px;
+}
+
+.sign__eyes {
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  translate: 0 -50%;
+  background-color: transparent;
+}
+
+.sign__button {
+  margin: 8px;
+  padding: 8px 24px;
+  background-color: #487;
+  border-radius: 8px;
+  font-size: 20px;
+}
+
+.sign__bottom {
+  color: #999;
+}
+
+.sign__link {
+  color: #487;
+  text-decoration: none;
+}
+
+.sign__link:hover {
+  text-decoration: underline;
+}
