@@ -4,7 +4,10 @@ import { BsEnvelope, BsLock, BsEye, BsEyeSlash } from "react-icons/bs";
 import "./Sign.css";
 
 function SignIn() {
-  const [showPassword, setShowPassword] = useState(false);
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  const [showPassword, setShowPassword] = useState<boolean>(false);
 
   return (
     <div className="sign">
@@ -13,14 +16,22 @@ function SignIn() {
       <div className="sign__form">
         <div className="sign__box">
           <BsEnvelope className="sign__icon" />
-          <input type="text" placeholder="Email" className="sign__input" />
+          <input
+            type="text"
+            value={email}
+            placeholder="Email"
+            className="sign__input"
+            onChange={(event) => setEmail(event.target.value)}
+          />
         </div>
         <div className="sign__box">
           <BsLock className="sign__icon" />
           <input
             type={showPassword ? "text" : "password"}
+            value={password}
             placeholder="Password"
             className="sign__input"
+            onChange={(event) => setPassword(event.target.value)}
           />
           <button
             className="sign__eyes"

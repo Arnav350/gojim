@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { BsEnvelope, BsLock, BsEye, BsEyeSlash } from "react-icons/bs";
+import {
+  BsPerson,
+  BsEnvelope,
+  BsLock,
+  BsEye,
+  BsEyeSlash,
+} from "react-icons/bs";
 import "./Sign.css";
 
 function SignUp() {
+  const [firstName, setFirstName] = useState<string>("");
+  const [lastName, setLastName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [passwordConfirm, setPasswordConfirm] = useState<string>("");
+
   const [showPassword, setShowPassword] = useState(false);
 
   return (
@@ -13,32 +25,44 @@ function SignUp() {
       <div className="sign__form">
         <div className="sign__names">
           <div className="sign__box">
-            <BsEnvelope className="sign__icon" />
+            <BsPerson className="sign__icon" />
             <input
               type="text"
+              value={firstName}
               placeholder="First Name"
               className="sign__input"
+              onChange={(event) => setFirstName(event.target.value)}
             />
           </div>
           <div className="sign__box">
-            <BsEnvelope className="sign__icon" />
+            <BsPerson className="sign__icon" />
             <input
               type="text"
+              value={lastName}
               placeholder="Last Name"
               className="sign__input"
+              onChange={(event) => setLastName(event.target.value)}
             />
           </div>
         </div>
         <div className="sign__box">
           <BsEnvelope className="sign__icon" />
-          <input type="text" placeholder="Email" className="sign__input" />
+          <input
+            type="text"
+            value={email}
+            placeholder="Email"
+            className="sign__input"
+            onChange={(event) => setEmail(event.target.value)}
+          />
         </div>
         <div className="sign__box">
           <BsLock className="sign__icon" />
           <input
             type={showPassword ? "text" : "password"}
+            value={password}
             placeholder="Password"
             className="sign__input"
+            onChange={(event) => setPassword(event.target.value)}
           />
           <button
             className="sign__eyes"
@@ -55,8 +79,10 @@ function SignUp() {
           <BsLock className="sign__icon" />
           <input
             type={showPassword ? "text" : "password"}
+            value={passwordConfirm}
             placeholder="Confirm Password"
             className="sign__input"
+            onChange={(event) => setPasswordConfirm(event.target.value)}
           />
         </div>
         <button className="sign__button">Register</button>
