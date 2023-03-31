@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import GymLog from "../components/GymLog";
 import {
   BsGraphUp,
@@ -8,8 +8,13 @@ import {
 } from "react-icons/bs";
 import "./Gym.css";
 
+interface IWorkout {
+  start: boolean;
+  show: boolean;
+}
+
 interface IProps {
-  setWorkout: Function;
+  setWorkout: Dispatch<SetStateAction<IWorkout>>;
 }
 
 function Gym(props: IProps) {

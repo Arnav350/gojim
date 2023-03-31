@@ -7,15 +7,6 @@ interface IProps {
   name: string;
 }
 
-interface IPrevSet {
-  label?: "W" | "D";
-  weight: number;
-  reps: number;
-  note?: string;
-}
-
-type IPrevSets = IPrevSet[];
-
 interface ISet {
   label?: "W" | "D";
   weight: number;
@@ -26,8 +17,8 @@ interface ISet {
 type ISets = ISet[];
 
 function RoutineExercise(props: IProps) {
-  const [prevSets, setPrevSets] = useState<IPrevSets>([
-    { label: "W", weight: 200, reps: 10, note: "note" },
+  const [prevSets, setPrevSets] = useState<ISets>([
+    { label: "W", weight: 200, reps: 10, notes: "notes" },
     { weight: 300, reps: 8 },
     { label: "D", weight: 400, reps: 6 },
   ]);
@@ -58,7 +49,7 @@ function RoutineExercise(props: IProps) {
         <h4 className="exercise__subtitle">Notes</h4>
       </div>
       <div className="exercise__sets">
-        {prevSets.map((prevSet: IPrevSet, i: number) => (
+        {prevSets.map((prevSet: ISet, i: number) => (
           <ExerciseSet
             key={i}
             id={i}

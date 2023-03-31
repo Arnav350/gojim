@@ -5,22 +5,28 @@ import { BsGraphUp, BsPlusLg } from "react-icons/bs";
 import "./Nutrition.css";
 
 function Nutrition() {
-  const [showFood, setShowFood] = useState(false);
+  const [showFood, setShowFood] = useState<boolean>(false);
 
-  const [mealTitle, setMealTitle] = useState("");
+  const [mealTitle, setMealTitle] = useState<string>("");
 
-  const [macros, setMacros] = useState([2000, 160, 50, 120, 8]);
-  const [totals, setTotals] = useState([3000, 130, 100, 600, 24]);
+  const [macros, setMacros] = useState<number[]>([2000, 160, 50, 120, 8]);
+  const [totals, setTotals] = useState<number[]>([3000, 130, 100, 600, 24]);
 
   const [meals, setMeals] = useState<string[]>(["Lunch", "Dinner", "Snack"]);
+  const [currentMeal, setCurrentMeal] = useState<string>("");
 
   function handleClick() {
-    setShowFood(true);
-    if (mealTitle) {
-      setMeals([...meals, mealTitle]);
+    const mealName: string = mealTitle || "Meal Name";
+    if (meals.includes(mealName)) {
+      let i: number;
+      for (i = 1; meals.includes(mealName + ` (${i})`); i++) {}
+      setMeals([...meals, mealName + ` (${i})`]);
+      setCurrentMeal(mealName + ` (${i})`);
     } else {
-      setMeals([...meals, "Meal Name"]);
+      setMeals([...meals, mealName]);
+      setCurrentMeal(mealName);
     }
+    setShowFood(true);
   }
 
   return (
@@ -159,12 +165,23 @@ function Nutrition() {
             </button>
           </div>
           {meals.map((meal: string, i: number) => (
-            <Meal key={i} title={meal} setShowFood={setShowFood} />
+            <Meal
+              key={i}
+              title={meal}
+              setCurrentMeal={setCurrentMeal}
+              setShowFood={setShowFood}
+            />
           ))}
         </div>
       </div>
       {showFood && (
-        <Food setShowFood={setShowFood} meals={meals} setMeals={setMeals} />
+        <Food
+          meals={meals}
+          setMeals={setMeals}
+          currentMeal={currentMeal}
+          setCurrentMeal={setCurrentMeal}
+          setShowFood={setShowFood}
+        />
       )}
     </main>
   );

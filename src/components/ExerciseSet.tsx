@@ -1,22 +1,26 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import "./Workout.css";
+
+interface ISet {
+  label?: "W" | "D";
+  weight: number;
+  reps: number;
+  notes?: string;
+}
+
+type ISets = ISet[];
 
 interface IProps {
   id: number;
-  prevSet: {
-    label?: "W" | "D";
-    weight: number;
-    reps: number;
-    note?: string;
-  };
-  sets: { label?: "W" | "D"; weight: number; reps: number; note?: string }[];
-  setSets: Function;
+  prevSet: ISet;
+  sets: ISets;
+  setSets: Dispatch<SetStateAction<ISets>>;
 }
 
 function ExerciseSet(props: IProps) {
   const [weight, setWeight] = useState<string>("");
   const [reps, setReps] = useState<string>("");
-  const [note, setNote] = useState<string>("");
+  const [notes, setNotes] = useState<string>("");
 
   function handleWeightBlur() {
     const tempSets = [...props.sets];
@@ -31,9 +35,9 @@ function ExerciseSet(props: IProps) {
     props.setSets([...tempSets]);
   }
 
-  function handleNoteBlur() {
+  function handleNotesBlur() {
     const tempSets = [...props.sets];
-    tempSets[props.id].note = note !== "" ? note : props.prevSet.note;
+    tempSets[props.id].notes = notes !== "" ? notes : props.prevSet.notes;
     props.setSets([...tempSets]);
   }
 
@@ -64,11 +68,11 @@ function ExerciseSet(props: IProps) {
       </div>
       <input
         type="text"
-        placeholder={props.prevSet.note}
-        value={note}
-        className="set__note"
-        onChange={(event) => setNote(event.target.value)}
-        onBlur={handleNoteBlur}
+        placeholder={props.prevSet.notes}
+        value={notes}
+        className="set__notes"
+        onChange={(event) => setNotes(event.target.value)}
+        onBlur={handleNotesBlur}
       />
     </div>
   );

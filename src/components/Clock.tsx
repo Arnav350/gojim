@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useState } from "react";
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import EditTimers from "./EditTimers";
 import { BsSliders, BsXLg, BsPencilSquare, BsChevronUp } from "react-icons/bs";
 import "./Workout.css";
@@ -10,10 +10,8 @@ interface IWorkout {
 
 interface IProps {
   workout: IWorkout;
-  styleShowClock: CSSProperties;
-  setStyleShowClock: Function;
   showClock: boolean;
-  setShowClock: Function;
+  setShowClock: Dispatch<SetStateAction<boolean>>;
 }
 
 function Clock(props: IProps) {
@@ -74,7 +72,6 @@ function Clock(props: IProps) {
 
   function handleXClick() {
     props.setShowClock(false);
-    props.setStyleShowClock({ display: "none" });
   }
 
   return (
@@ -82,8 +79,12 @@ function Clock(props: IProps) {
       className="clock"
       style={
         props.workout.show
-          ? { ...props.styleShowClock }
-          : { ...props.styleShowClock, position: "static", textAlign: "center" }
+          ? { display: props.showClock ? "block" : "none" }
+          : {
+              display: props.showClock ? "block" : "none",
+              position: "static",
+              textAlign: "center",
+            }
       }
     >
       {props.workout.show ? (
@@ -175,7 +176,6 @@ function Clock(props: IProps) {
               </button>
             </div>
           )}
-
           {!timerStart && !stopwatchStart && (
             <div className="clock__timers">
               <div className="clock__timer" onClick={() => setShowTimers(true)}>

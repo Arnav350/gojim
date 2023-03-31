@@ -160,11 +160,8 @@
   font-size: 24px;
 }
 
-.food__edit {
-  display: flex;
-  justify-content: center;
-  background-color: transparent;
-  border: none;
+.food__invis {
+  visibility: hidden;
 }
 
 .food__search {

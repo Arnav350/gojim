@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import PlateCalculator from "./PlateCalculator";
 import SetLabels from "./SetLabels";
 import Clock from "./Clock";
@@ -15,11 +15,10 @@ interface IWorkout {
 
 interface IProps {
   workout: IWorkout;
-  setWorkout: Function;
+  setWorkout: Dispatch<SetStateAction<IWorkout>>;
 }
 
 function Workout(props: IProps) {
-  const [showClock, setShowClock] = useState<boolean>(false);
   const [showAdd, setShowAdd] = useState<boolean>(false);
 
   const [date, setDate] = useState();
@@ -33,29 +32,26 @@ function Workout(props: IProps) {
   ]);
   const [setsAmount, setSetsAmount] = useState<number[]>([3, 3, 3]);
 
-  const [styleShowClock, setStyleShowClock] = useState({ display: "none" });
+  const [showClock, setShowClock] = useState<boolean>(false);
 
   function handleClockClick() {
     setShowClock(true);
-    setStyleShowClock({ display: "block" });
   }
 
   function handleDownClick() {
     props.setWorkout({ ...props.workout, show: false });
-    setStyleShowClock({ display: "block" });
+    setShowClock(true);
   }
 
   function handleUpClick() {
     props.setWorkout({ ...props.workout, show: true });
-    setStyleShowClock({ display: "none" });
+    setShowClock(false);
   }
 
   return (
     <div
       className="workout"
-      style={
-        props.workout.show ? undefined : { bottom: "64px", height: "64px" }
-      }
+      style={props.workout.show ? {} : { bottom: "64px", height: "64px" }}
     >
       {props.workout.show ? (
         <div className="workout__show">
@@ -99,8 +95,6 @@ function Workout(props: IProps) {
       )}
       <Clock
         workout={props.workout}
-        styleShowClock={styleShowClock}
-        setStyleShowClock={setStyleShowClock}
         showClock={showClock}
         setShowClock={setShowClock}
       />

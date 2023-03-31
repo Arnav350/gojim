@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import ChatMessage from "./ChatMessage";
 import {
   BsChevronLeft,
@@ -12,7 +12,7 @@ import "../pages/Connect.css";
 
 interface IProps {
   currentUser: string;
-  setCurrentUser: Function;
+  setCurrentUser: Dispatch<SetStateAction<string>>;
 }
 
 interface IMessage {

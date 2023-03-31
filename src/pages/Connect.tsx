@@ -115,14 +115,14 @@ function Connect() {
             <div
               key={i}
               className="connect__story"
-              style={story.seen ? { border: "2px solid #eee" } : undefined}
+              style={story.seen ? { border: "2px solid #eee" } : {}}
               onClick={() => handleStoryClick(i)}
             >
               <img
                 src={story.picture}
                 alt=""
                 className="connect__picture"
-                style={story.seen ? { opacity: "0.4" } : undefined}
+                style={story.seen ? { opacity: "0.4" } : {}}
               />
               <p className="connect__text">{story.name}</p>
               {story.seen && <BsArrowRepeat className="connect__replay" />}
@@ -138,9 +138,7 @@ function Connect() {
             >
               <div
                 className="connect__circle"
-                style={
-                  user.seen ? { backgroundColor: "transparent" } : undefined
-                }
+                style={user.seen ? { backgroundColor: "transparent" } : {}}
               ></div>
               <img src={user.picture} alt="" className="connect__avatar" />
               <div className="connect__user">

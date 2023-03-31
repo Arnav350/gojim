@@ -1,14 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import { BsXLg, BsCheckLg, BsChevronDown } from "react-icons/bs";
 import "./Workout.css";
 
 interface IProps {
-  setShowNew: Function;
+  setShowNew: Dispatch<SetStateAction<boolean>>;
 }
 
 function WorkoutNew(props: IProps) {
   const [exerciseName, setExerciseName] = useState<string>("");
-  const [showDropdown, setShowDropdown] = useState<boolean>(false);
 
   const muscles: string[] = [
     "Chest",

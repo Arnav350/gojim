@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import {
   BsArrowLeft,
-  BsPencilSquare,
   BsCheckLg,
   BsSearch,
   BsUpcScan,
@@ -12,9 +11,11 @@ import {
 import "../pages/Nutrition.css";
 
 interface IProps {
-  setShowFood: Function;
   meals: string[];
-  setMeals: Function;
+  setMeals: Dispatch<SetStateAction<string[]>>;
+  currentMeal: string;
+  setCurrentMeal: Dispatch<SetStateAction<string>>;
+  setShowFood: Dispatch<SetStateAction<boolean>>;
 }
 
 interface IHistory {
@@ -27,10 +28,7 @@ interface IHistory {
 type IHistories = IHistory[];
 
 function Food(props: IProps) {
-  const heading = useRef<HTMLInputElement>(null!);
-
-  const [edit, setEdit] = useState<boolean>(false);
-  const [mealName, setMealName] = useState<string>("Meal Name");
+  const [mealName, setMealName] = useState<string>(props.currentMeal);
 
   const [histories, setHistories] = useState<IHistories>([
     {
@@ -47,23 +45,19 @@ function Food(props: IProps) {
     },
   ]);
 
-  function toggleHeadingEdit() {
-    if (edit) {
-      setEdit(false);
-      heading.current.readOnly = true;
-    } else {
-      setEdit(true);
-      heading.current.readOnly = false;
-      heading.current.select();
-    }
-  }
-
   function handleBlur() {
-    // if (mealName) {
-    //   props.setMeals([...props.meals, mealName]);
-    // } else {
-    //   props.setMeals([...props.meals, "Meal Name"]);
-    // }
+    const mealsArr: string[] = [...props.meals];
+
+    if (props.meals.includes(mealName)) {
+      let i: number;
+      for (i = 1; props.meals.includes(mealName + ` (${i})`); i++) {}
+      mealsArr[props.meals.indexOf(props.currentMeal)] = mealName + ` (${i})`;
+      props.setCurrentMeal(mealName + ` (${i})`);
+    } else {
+      mealsArr[props.meals.indexOf(props.currentMeal)] = mealName;
+      props.setCurrentMeal(mealName);
+    }
+    props.setMeals(mealsArr);
   }
 
   return (
@@ -78,19 +72,11 @@ function Food(props: IProps) {
             type="text"
             placeholder="Meal Name"
             value={mealName}
-            readOnly={true}
             className="food__heading"
-            ref={heading}
             onChange={(event) => setMealName(event.target.value)}
             onBlur={handleBlur}
           />
-          <button className="food__edit" onClick={toggleHeadingEdit}>
-            {edit ? (
-              <BsCheckLg className="food__nav" />
-            ) : (
-              <BsPencilSquare className="food__nav" />
-            )}
-          </button>
+          <BsArrowLeft className="food__invis food__nav" />
         </div>
         <div className="food__search">
           <BsSearch className="food__magnify" />

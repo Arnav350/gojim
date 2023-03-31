@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import { BsChevronDown, BsPlus, BsDash } from "react-icons/bs";
 import "./Workout.css";
 
 interface IProps {
   timers: number[];
-  setTimers: Function;
-  setShowTimers: Function;
+  setTimers: Dispatch<SetStateAction<number[]>>;
+  setShowTimers: Dispatch<SetStateAction<boolean>>;
 }
 
 function EditTimers(props: IProps) {

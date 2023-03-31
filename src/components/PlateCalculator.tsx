@@ -112,7 +112,7 @@ function PlateCalculator() {
                 onMouseUp={() => handleClick(i)}
                 onTouchEnd={() => handleClick(i)}
                 onClick={handleTotalBlur}
-                style={plateValues[i] ? { opacity: "0.1" } : undefined}
+                style={plateValues[i] ? { opacity: "0.1" } : {}}
               >
                 {plateWeight}
               </button>

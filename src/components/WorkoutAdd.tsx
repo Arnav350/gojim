@@ -1,7 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import WorkoutNew from "./WorkoutNew";
 import { BsXLg, BsSearch, BsPlusLg } from "react-icons/bs";
 import "./Workout.css";
+
+interface IProps {
+  setShowAdd: Dispatch<SetStateAction<boolean>>;
+}
 
 interface IExercise {
   name: string;
@@ -9,10 +13,6 @@ interface IExercise {
 }
 
 type IExercises = IExercise[];
-
-interface IProps {
-  setShowAdd: Function;
-}
 
 function WorkoutAdd(props: IProps) {
   const [exercises, setExercises] = useState<IExercises>([

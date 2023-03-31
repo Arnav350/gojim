@@ -337,7 +337,7 @@
 
 .set__weight,
 .set__reps,
-.set__note {
+.set__notes {
   background-color: transparent;
   font-size: 14px;
 }
@@ -355,7 +355,7 @@
   width: 34.59px;
 }
 
-.set__note {
+.set__notes {
   width: 100%;
 }
 
