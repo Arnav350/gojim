@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { BsArrowLeft, BsPlusLg, BsThreeDots } from "react-icons/bs";
 import "./Routine.css";
 
@@ -32,7 +33,9 @@ function Routine() {
   return (
     <main className="routine">
       <header className="routine__top">
-        <BsArrowLeft className="routine__nav" />
+        <Link to="/gym">
+          <BsArrowLeft className="routine__nav" />
+        </Link>
         <h2 className="routine__heading">Routines</h2>
         <BsPlusLg className="routine__nav" />
       </header>

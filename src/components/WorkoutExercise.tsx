@@ -24,7 +24,7 @@ function RoutineExercise(props: IProps) {
   ]);
 
   const [sets, setSets] = useState<ISets>([
-    { label: "W", weight: 200, reps: 10 },
+    { label: "W", weight: 200, reps: 10, notes: "notes" },
     { weight: 300, reps: 8 },
     { label: "D", weight: 400, reps: 6 },
   ]);
