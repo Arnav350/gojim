@@ -1,5 +1,6 @@
 import React, { Dispatch, SetStateAction } from "react";
 import GymLog from "../components/GymLog";
+import { Link } from "react-router-dom";
 import {
   BsGraphUp,
   BsPlusLg,
@@ -41,10 +42,10 @@ function Gym(props: IProps) {
               <BsClipboard2Plus className="gym__icon" />
               <h4 className="gym__subtitle">New Routine</h4>
             </button>
-            <button className="gym__routine">
+            <Link to="/routine" className="gym__routine">
               <BsBookmark className="gym__icon" />
               <h4 className="gym__subtitle">Select Routine</h4>
-            </button>
+            </Link>
           </div>
         </div>
         <div className="gym__logs">

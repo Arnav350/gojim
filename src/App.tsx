@@ -9,6 +9,7 @@ import Nutrition from "./pages/Nutrition";
 import Connect from "./pages/Connect";
 import Compete from "./pages/Compete";
 import Profile from "./pages/Profile";
+import Routine from "./pages/Routine";
 import Workout from "./components/Workout";
 import "./App.css";
 
@@ -27,6 +28,7 @@ function App() {
         {/* Protected Routes */}
 
         <Route path="/gym" element={<Gym setWorkout={setWorkout} />} />
+        <Route path="/routine" element={<Routine />} />
         {/* Workout Log Page
         Includes workout logs, create a new workout, and progress graph */}
 
